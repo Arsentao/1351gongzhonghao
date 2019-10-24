@@ -1,0 +1,9 @@
+﻿前端部分部署步骤
+
+* 第一次导入，要安装所有的包, cd 到根目录/fengpu下，执行 npm install
+
+1.修改配置：fengpu/config/prod.env.js 的HOST参数和APPID参数，换成自己的域名和公众号APPID
+
+2.打包代码： npm run build
+
+3.编译打包成功后 将 fengpu/dist 目录下的代码 复制到服务器上即可
