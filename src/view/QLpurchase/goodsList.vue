@@ -40,9 +40,7 @@
             <span class="goods-price">
               <i class="sub">￥</i>
               {{ items.price }}
-              <!-- <i class="sub">.{{items.decimal}}</i> -->
             </span>
-            <i class="shopping-car"></i>
           </p>
           <span class="buynow">立即购买</span>
         </div>
@@ -79,6 +77,7 @@ export default {
     }
   },
   created () {
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
     window.addEventListener('scroll', this.onScroll)
     this.loading = true
     this.getDataList()
@@ -248,13 +247,11 @@ export default {
 }
 .cnt-tit {
   text-align: left;
-  padding: 0 0.2em;
-  padding-top: 1em;
-  padding-bottom: 0.8em;
+  padding-bottom: 0.5em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 15px;
+  font-size: 18px;
 }
 .cnt-brief {
   font-size: 11px;
@@ -265,33 +262,28 @@ export default {
   font-size: 14px;
 }
 .item-bottom {
-  position: absolute;
-  display: inline-block;
-  bottom: 1.5em;
+  /* position: absolute;
+  display: inline-block; */
+  margin-top: 2em;
 }
 .buynow {
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em;
   color: #fff;
-  background: #02a1e9;
+  background: #ee2929;
   position: absolute;
   right: 0;
   bottom: 0;
+  font-size: 18px;
 }
 .goods-price {
   float: left;
   padding: 0 0.2em;
   color: rgb(185, 0, 0);
-  font-size: 15px;
+  font-size: 18px;
 }
 .goods-price > i {
   font-style: normal;
-  font-size: 12px;
+  font-size: 15px;
 }
-.shopping-car {
-  margin-right: 1em;
-  width: 1.5em;
-  height: 1.5em;
-  background: url("../../assets/images/icon/shopping-car.png") no-repeat right;
-  background-size: 1.5em 1.5em;
-}
+
 </style>

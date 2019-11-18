@@ -20,7 +20,7 @@
            v-for="(item,index) of orderLists"
            :key="index">
         <div class="orderList-goods-num clearfix">
-          <span class="orderList-goods-num-p1">订单编号</span>
+          <span class="orderList-goods-num-p1"><span class="total-show">订单编号</span></span>
           <span class="orderList-goods-num-p2">{{item.orderNumber}}</span>
           <span class="orderList-goods-num-p3">{{['','待付款', '待发货', '待收货', '待评价', '已完成', '已取消'][item.status]}}</span>
         </div>
@@ -34,8 +34,8 @@
                  :key="idx">
           </div>
           <div class="orderList-goods-img-p">
-            <span class="orderList-goods-img-p1">共计{{calProdCount(item.orderItemDtos)}}件商品</span>
-            <span class="orderList-goods-img-p2">合计：</span>
+            <span class="orderList-goods-img-p1">共&nbsp;<span style="color:red">{{calProdCount(item.orderItemDtos)}}</span>&nbsp;件商品</span>
+            <span class="price-show">合计</span>&nbsp;
             <span class="orderList-goods-img-p3">￥</span>
             <span class="orderList-goods-img-p4">
               <strong>{{item.actualTotal}}</strong>
@@ -73,7 +73,7 @@
 export default {
   data () {
     return {
-      title: '琴侣-我的订单',
+      title: '琴侣 —— 我的订单',
       orderLists: [],
       selStatus: 0,
       totalPage: 1,
@@ -83,7 +83,7 @@ export default {
     }
   },
   created () {
-    this.title = '琴侣-我的订单'
+    this.title = '琴侣 —— 我的订单'
     // 请求信息
     this.loadPageData(1)
   },
@@ -315,6 +315,11 @@ button {
 .orderList-goods-img-p4 > strong {
   font-weight: normal;
   font-size: 16px;
+  color: red;
+}
+.orderList-goods-img-p3 {
+  font-size: 16px;
+  color: red;
 }
 /* 按钮 */
 .orderList-goods-btns {

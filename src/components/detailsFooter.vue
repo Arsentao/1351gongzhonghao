@@ -2,18 +2,18 @@
   <div class="det-foot-box">
     <footer class="clearfix">
       <ul class="detfoot-left">
-        <li>
+        <li class="li-first">
           <a href="/index">
             <img src="../assets/images/icon/foot_nav_home_02.png"
                  alt="">
-            <p>首页</p>
+            <p style="font-weight:bold">首页</p>
           </a>
         </li>
         <li>
           <a href="/car">
             <img src="../assets/images/icon/detCar.png"
                  alt="">
-            <p>购物车</p>
+            <p style="font-weight:bold">购物车</p>
             <span class="cart-total-count"
                   v-if="totalCartNum>0">{{totalCartNum}}</span>
           </a>
@@ -59,12 +59,14 @@ export default {
 <style>
 .det-foot-box {
   margin-top: 45px;
+  z-index: 1000;
 }
 footer {
   width: 100%;
   position: fixed;
+  z-index: 1000;
   bottom: 0;
-  background-color: #fff;
+  background-color: rgb(224, 221, 238);
   height: 50px;
   box-shadow: 0px -1px 1px rgba(150, 150, 150, 0.1);
 }
@@ -89,7 +91,7 @@ footer {
   padding-top: 0.4em;
 }
 .detfoot-left > li p {
-  color: #8e8e8e;
+  color: black;
   font-size: 13px;
 }
 /* 右边 */
@@ -104,10 +106,10 @@ footer {
   height: 100%;
 }
 .detfoot-right > li:first-child {
-  background-color: #02a1e9;
+  background-color: #ca210a;
 }
 .detfoot-right > li:last-child {
-  background-color: #564e5f;
+  background-color: #389638;
 }
 .detfoot-right > li > a {
   display: block;
@@ -129,5 +131,8 @@ footer {
   line-height: 16px;
   font-size: 12px;
   color: #fff;
+}
+.li-first{
+background-color: rgb(26, 153, 212)
 }
 </style>

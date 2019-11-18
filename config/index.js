@@ -11,7 +11,7 @@ module.exports = {
     host: 'localhost',
     proxyTable: {
       '/apis': {    //将www.exaple.com印射为/apis
-        target: "http://192.168.0.173:8186",  // 接口域名
+        target: "http://912.168.0.173:8186",  // 接口域名
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true,  //是否跨域
         pathRewrite: {
@@ -33,7 +33,7 @@ module.exports = {
     // Use Eslint Loader?
     // If true, your code will be linted during bundling and
     // linting errors and warnings will be shown in the console.
-    useEslint: true,
+    useEslint: false,
     // If true, eslint errors and warnings will also be shown in the error overlay
     // in the browser.
     showEslintErrorsInOverlay: false,

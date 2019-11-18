@@ -170,7 +170,8 @@ export default {
       }).then(({ data }) => {
         this.$toast.clear()
         this.$dialog.alert({
-          message: '提交成功，等待后台审核'
+          title:"提交成功！",
+          message: '等待后台审核'
         }).then(() => {
           this.$router.push('/forum')
         });

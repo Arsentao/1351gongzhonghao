@@ -23,7 +23,7 @@
             :key="index">
           <div class="song-orders-list-upload">
             <div class="song-orders-list-upload-num clearfix">
-              <p class="song-orders-list-upload-num-p1">订单编号：</p>
+              <p class="song-orders-list-upload-num-p1"><span class="total-show">订单编号</span></p>
               <p class="song-orders-list-upload-num-p2">{{ items.orderNo }}</p>
               <p class="song-orders-list-upload-num-p3">{{['', '待支付', '待收货', '已完成', '已取消'][items.orderState]}}</p>
             </div>
@@ -34,13 +34,13 @@
                    v-for="(item,index) of items.musicOrderItemDtoList"
                    :key="index">
                 <p class="song-orders-list-upload-name-p1">{{ item.musicName }}</p>
-                <p class="song-orders-list-upload-name-p2">￥{{ item.price}}</p>
+                <p class="song-orders-list-upload-name-p2" style="color:red">￥&nbsp;{{ item.price}}</p>
               </div>
               <div class="song-orders-goods-img-p">
-                <p class="song-orders-goods-img-p1">共{{ items.musicOrderItemDtoList.length }}首曲目</p>
-                <p class="song-orders-goods-img-p2">合计：</p>
-                <p class="song-orders-goods-img-p3">￥</p>
-                <p class="song-orders-goods-img-p4">{{ items.totalAmount }}</p>
+                <p class="song-orders-goods-img-p1">共&nbsp;<span style="color:red">{{items.musicOrderItemDtoList.length}}</span>&nbsp;首曲目</p>
+                <p class="song-orders-goods-img-p2"><span class="price-show">合计</span></p>
+                <p class="song-orders-goods-img-p3" style="color:red">￥</p>
+                <p class="song-orders-goods-img-p4" style="color:red">{{ items.totalAmount }}</p>
               </div>
             </div>
             <!-- 按钮 -->
@@ -98,7 +98,7 @@ Vue.use(Popup)
 export default {
   data () {
     return {
-      title: '曲谱购买-订单列表',
+      title: '曲谱购买 —— 订单列表',
       orderLists: [],
       status: 0,
       count: 0,

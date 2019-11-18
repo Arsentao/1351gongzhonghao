@@ -35,9 +35,9 @@
     <!-- 侧边菜单栏 -->
     <div :class="['side-menu', {'open':leftMenuShow}]">
       <div class="items">
-        <router-link :to="{path:item.path}"
-                     v-for="item in leftMenus"
-                     :key="item.name">
+         <a :href="item.path"
+                     v-for="item in leftMenus"
+                     :key="item.name">
           <span style="margin-left: 50px;">{{item.name}}</span>
           <img src="../assets/images/menu/arrow-right.png"
                alt=""
@@ -45,7 +45,7 @@
           <img :src="item.icon"
                alt=""
                class="side-icon">
-        </router-link>
+        <a>
       </div>
     </div>
     <div :class="['side-bg', {'open':leftMenuShow}]"
@@ -102,7 +102,17 @@ export default {
           name: '视频展示',
           path: '/video',
           icon: videoPic
-        }
+        },
+           {
+          name: '丰谱官网',
+          path: 'http://www.phonpad.com',
+          icon: videoPic
+        },
+         {
+          name: '华工官网',
+          path: 'https://www.scut.edu.cn/new/',
+          icon: videoPic
+        },
       ]
     }
   },
@@ -132,7 +142,7 @@ export default {
 <style scoped>
 
 footer {
-  z-index: 11;
+  z-index: 1000;
 }
 ul.foot-nav {
   position: fixed;
@@ -270,8 +280,8 @@ ul.foot-nav > li {
 .side-menu .items a {
   text-align: left;
   width: 100%;
-  height: 60px;
-  line-height: 60px;
+  height: 40px;
+  line-height: 40px;
   border-bottom: 1px solid #4a4d54;
   display: block;
   color: #fff;
@@ -303,14 +313,14 @@ ul.foot-nav > li {
   position: absolute;
   width: 15px;
   right: 20px;
-  top: 23px;
+  top: 12px;
 }
 
 .side-menu .side-icon {
   position: absolute;
   width: 20px;
   left: 20px;
-  top: 20px;
+  top: 10px;
 }
 
 .open a:nth-child(2) {
@@ -336,6 +346,15 @@ ul.foot-nav > li {
 .open a:nth-child(7) {
   transition-delay: 560ms;
 }
+
+.open a:nth-child(8) {
+  transition-delay: 640ms;
+}
+
+.open a:nth-child(9) {
+  transition-delay: 720ms;
+}
+
 
 .side-bg {
   display: none;

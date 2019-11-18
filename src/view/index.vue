@@ -1,9 +1,10 @@
 <template>
   <!-- 主体 -->
   <div class="wrap-bg">
+
     <div class="top-logo">
       <img src="../assets/images/homePage/logo1.png"
-           alt="" height="40rem">
+           alt="" height="30rem">
     </div>
     <!-- 菜单 -->
     <ul class="menu clearfix"
@@ -36,6 +37,9 @@
         <!-- /水波纹效果 -->
       </li>
     </ul>
+
+
+
     <foot-nav :navIndex="1"></foot-nav>
   </div>
 </template>
@@ -52,31 +56,30 @@ export default {
       pages: [
          {
           path: '/video',
-          img: require('../assets/images/homePage/btn_video1.png')
+          img: require('../assets/images/homePage/btn_video.png')
         },{
-          path: '/forum',
-          img: require('../assets/images/homePage/btn_com1.png')
+          path: '/personal',
+          img: require('../assets/images/homePage/btn_personal1.png')
         },
         {
           path: '/songSearch',
-          img: require('../assets/images/homePage/btn_order1.png')
+          img: require('../assets/images/homePage/btn_order.png')
         },  {
-          path: '/explain',
-          img: require('../assets/images/homePage/btn_make1.png')
+          path: '/explain1',
+          img: require('../assets/images/homePage/btn_make.png')
         },
         {
           path: '/goodsList',
-          img: require('../assets/images/homePage/btn_qinlv2.png')
+          img: require('../assets/images/homePage/btn_qinlv.png')
         },
         {
-          path: '/personal',
-          img: require('../assets/images/homePage/btn_personal1.png')
+          path: '/forum',
+          img: require('../assets/images/homePage/btn_com.png')
         }
       ]
     }
   },
   created () {
-    this.title = '丰谱信息技术'
   },
 
   methods: {
@@ -100,7 +103,7 @@ export default {
   box-sizing: border-box;
   width: 100%;
   height: auto;
-  padding: 2em 0 1em 0;
+  padding: 1em 0 1em 0;
 }
 .top-logo > img {
   width: 70%;
@@ -149,42 +152,42 @@ img.menu-btn {
   border-radius: 40vw;
 }
 .wavebg-0 {
-  background: url("../assets/images/homePage/btn_video1.png");
+  background: url("../assets/images/homePage/btn_video.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
   background-color: #f7fdfd;
 }
 .wavebg-1 {
-  background: url("../assets/images/homePage/btn_com1.png");
+  background: url("../assets/images/homePage/btn_personal1.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
   background-color: #f7fdfd;
 }
 .wavebg-2 {
-  background: url("../assets/images/homePage/btn_order1.png");
+  background: url("../assets/images/homePage/btn_order.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
   background-color: #f7fdfd;
 }
 .wavebg-3 {
-  background: url("../assets/images/homePage/btn_make1.png");
+  background: url("../assets/images/homePage/btn_make.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
   background-color: #f7fdfd;
 }
 .wavebg-4 {
-  background: url("../assets/images/homePage/btn_qinlv2.png");
+  background: url("../assets/images/homePage/btn_qinlv.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
   background-color: #f7fdfd;
 }
 .wavebg-5 {
-  background: url("../assets/images/homePage/btn_personal1.png");
+  background: url("../assets/images/homePage/btn_com.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
@@ -243,4 +246,16 @@ img.menu-btn {
   }
 }
 /** 水波纹end */
+
+
+.van-uploader__preview-delete{
+    position: absolute;
+    top: -8px;
+    right: -1px;
+    color: #969799;
+    font-size: 18px;
+    background-color: #fff;
+    border-radius: 100%;
+}
+
 </style>

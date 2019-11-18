@@ -6,15 +6,18 @@ import router from './router'
 import httpRequest from './util/httpRequest'
 import Vuex from 'vuex'
 import store from './store/store'
-import { Toast, Dialog, Popup, Button } from 'vant'
+import { Toast, Dialog, Popup, Button, Checkbox, CheckboxGroup, Notify, Icon, RadioGroup, Radio, Cell, CellGroup, Lazyload} from 'vant'
 import 'vant/lib/index.css'
 import VueWechatTitle from 'vue-wechat-title'
+import './style.css'
 Vue.use(Vuex)
-Vue.use(VueWechatTitle).use(Toast).use(Dialog).use(Popup).use(Button)
+Vue.use(VueWechatTitle).use(Toast).use(Dialog).use(Popup).use(Cell).use(CellGroup).use(Lazyload)
+.use(Button).use(Checkbox).use(CheckboxGroup).use(Notify).use(Icon).use(Radio).use(RadioGroup)
 
 // import layout from './components/layout'
 
 Vue.config.productionTip = false
+
 // 挂载全局
 Vue.prototype.$http = httpRequest // ajax请求方法
 

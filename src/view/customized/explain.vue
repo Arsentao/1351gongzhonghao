@@ -96,7 +96,7 @@ export default {
       }).then(({ data }) => {
         if(data.total > 0){
           this.$dialog.alert({
-            message: '您当前有未支付订单，请支付后再操作'
+            message: '您当前有未支付订单' + "\n" + '请支付后再操作'
           }).then(() => {
             this.$router.replace("/index");
             this.$router.push('/songOrderList')

@@ -43,7 +43,7 @@
         </div>
         <div class="item-goods-msg">
           <p class="goods-title">{{ item.prodName }}</p>
-          <p class="goods-sku">{{item.skuName}}</p>
+          <p class="goods-sku" :class="item.skuName == '银色'?'silver':'red'">{{item.skuName}}</p>
           <p class="goods-price">
             <i class="sub">￥</i>{{ item.price }}
             <!--<i class="sub">.{{ item.decimal }}</i> -->
@@ -55,7 +55,7 @@
     <!-- /商品 -->
 
     <!-- 数量统计 -->
-    <p class="count-txt">共{{totalCount}}件商品&nbsp;&nbsp;&nbsp;合计：<span class="red-price"><i class="sub">￥</i>{{total}}</span>
+    <p class="count-txt">共&nbsp;<span style="color:red">{{totalCount}}</span>&nbsp;件商品&nbsp;&nbsp;&nbsp;<span class="price-show">合计</span>&nbsp;<span class="red-price"><i class="sub">￥</i>{{total}}</span>
     </p>
     <!-- 给卖家留言 -->
     <div class="leave-msg">
@@ -66,21 +66,21 @@
     <!-- 订单总额 -->
     <div class="order-amount-details clearfix">
       <p class="amount-lst clearfix">
-        <span>订单总额：</span>
+        <span class="price-show">订单总额</span>
         <span><i class="sub">￥</i>{{total}}</span>
       </p>
       <p class="amount-lst clearfix">
-        <span>运费：</span>
+        <span class="price-show">运费</span>
         <span><i class="sub">￥</i>{{transfee}}</span>
       </p>
     </div>
     <!-- 小计 -->
-    <div class="subtotal">小计：<i class="sub">￥</i>{{actualTotal}}</div>
+    <div class="subtotal"><span class="price-show">小计</span>&nbsp;<i class="sub">￥</i>{{actualTotal}}</div>
 
     <!-- 脚部 -->
     <div class="order-foot-box">
       <div class="order-foot">
-        合计：&nbsp;&nbsp;<span class="count-txt "><i class="sub">￥</i>{{actualTotal}}</span>
+        <span class="price-show">合计</span>&nbsp;&nbsp;<span class="count-txt "><i class="sub">￥</i>{{actualTotal}}</span>
         <div class="sbumit-order-btn"
              @click="toPay">提交订单</div>
       </div>
@@ -94,7 +94,7 @@ export default {
   components: { topHead },
   data () {
     return {
-      title: '琴侣-提交订单',
+      title: '琴侣 —— 提交订单',
       orderList: [],
       orderEntry: sessionStorage.getItem('orderEntry'),
       userAddr: null,
@@ -111,7 +111,6 @@ export default {
       forbidClick: true,
       duration: 0
     })
-    this.title = '琴侣-提交订单'
     this.$http({
       url: this.$http.adornUrl('/p/order/confirm'),
       method: 'post',
@@ -269,7 +268,6 @@ p.goods-title {
   font-size: 15px;
 }
 p.goods-sku {
-  color: #b2b2b2;
   max-width: 58vw;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -277,6 +275,16 @@ p.goods-sku {
   padding-top: 0.7em;
   font-size: 14px;
 }
+
+.silver{
+color: silver;
+}
+
+.red{
+color: red;
+}
+
+
 .goods-price {
   padding-top: 1em;
   display: inline-block;
@@ -327,11 +335,14 @@ i.sub {
   margin-bottom: 0.5em;
 }
 .amount-lst span:first-child {
-  float: left;
+  float: right;
+  right: 80px;
+  position: absolute;
 }
 .amount-lst span:last-child {
   float: right;
   color: rgb(185, 0, 0);
+  font-size: 18px
 }
 .order-foot {
   font-size: 15px;

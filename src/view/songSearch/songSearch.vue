@@ -1,28 +1,39 @@
 <template>
   <div class="song-search">
 
-  <van-popup v-model="show" round id="pop"  closeable  
-   close-icon="close" close-icon-position="top-left" @close="leave">
+  <van-popup v-model="show" round id="pop" style="width:100%">
     <div class="windows" v-show="ifshow">
-      <video controls id="myVideo"
-            width="300px" height="150px" style="margin-top:60px"> 
+       <div class="close">
+            <img src="../../assets/images/icon/close.png" @click="leave()">
+        </div> 
+      <video id="myVideo" autoplay loop poster x5-playsinline="true" preload="auto" 
+    x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true"
+            width="100%" controls style="margin-top:5%"> 
              <source src=""
                 type="video/mp4">
       </video>
-      <router-link to="/goodsDetails/89"><button class="btn_window">购买鸟然谱琴侣</button></router-link>
-      <router-link to="/video"><button class="btn_window">观看视频简介</button></router-link>
-
-
+      <div class="tips"><span style="background-color:#4d79ff;color:white;padding:3px;">温馨提示:</span></br>该曲属琴侣预装曲目</div>
+      <router-link to="/goodsDetails/89"><button class="btn_buy">购买琴侣</button></router-link>
+      <router-link to="/video"><button class="btn_video">观看琴侣动漫</button></router-link>
     </div>
-    <div class="window" v-show="theshow" style="margin-top:60px">
-      <audio controls id="myaudio"> 
+
+
+    <div class="window" v-show="theshow">
+       <div class="close">
+            <img src="../../assets/images/icon/close.png" @click="leave()">
+        </div> 
+      <audio controls id="myaudio" style="margin-top:5%"> 
              <source src="">
       </audio>
-      <router-link to="/goodsDetails/89"><button class="btn_window">购买鸟然谱琴侣</button></router-link>
-      <router-link to="/video"><button class="btn_window">观看视频简介</button></router-link>
+      <router-link to="/goodsDetails/89"><button class="btn_buy">购买琴侣</button></router-link>
+      <router-link to="/video"><button class="btn_video">观看琴侣动漫</button></router-link>
       <div id="info">该视频正在制作中，请先试听歌曲</div>
     </div>
   </van-popup>
+
+
+
+
 
 
     <div class="head-wrap">
@@ -85,32 +96,37 @@
               <span class="song-search-li1-img2"
                     v-for="idx2 of item.difficult"
                     :key="item.musicId + '-d-' +idx2"></span>
-              <button v-show="item.price==0" class="star">赠送曲目</button>
+              <button v-show="item.price==0" class="star">购机赠送</button>
             </div>
           </div>
+
+          <div class="play">
+          <img src="../../assets/images/icon/play.png"
+                     alt=""
+                     @click="showPopup(item.auditionUrl)"
+                     class="song-search-li1-img5">
+          </div>
+
 
           <div class="song-search-list-div3">
             <div :class="['song-search-list-div3-div',{'playing':item.musicId==curMusicId}]">
               <!-- 加购 -->
+
+              <div class="img-cart">
               <button v-on:click.stop="addToCart(item.musicId)"
                       v-if="totalCartNum>=0">
                 <img src="../../assets/images/icon/shop.png"
                      alt=""
                      class="song-search-li1-img4">
               </button>
-            
+                </div>
+
+          
+
            
-            
-                <img src="../../assets/images/icon/play.png"
-                     alt=""
-                     @click="showPopup(item.auditionUrl)"
-                     class="song-search-li1-img5">
-
-            
-
             </div>
             <button class="song-search-list-btn2" v-if="item.price!=0"
-                     v-on:click.stop="buyNow(item.musicId,item.price)">立即购买</button>
+                     v-on:click.stop="buyNow(item.musicId,index)">立即购买</button>
               <router-link to="/goodsDetails/89" v-if="item.price==0">
               <button class="song-search-list-btn2" >立即购买</button>
               </router-link>
@@ -174,6 +190,7 @@ export default {
     }
   },
   created () {
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
     window.addEventListener('scroll', this.onScroll)
     this.loading = true
     this.show = true
@@ -198,12 +215,12 @@ export default {
       var souceHtml = "<source src='" + url + "' type='video/mp4'>"
       document.querySelector('#myVideo').innerHTML = souceHtml
       document.querySelector('#myVideo').load()
-      document.querySelector('#myVideo').play()
       }
       },
 
     //离开弹窗
     leave(){
+    this.show = false
     document.querySelector('#myaudio').pause()
     },
 
@@ -376,24 +393,13 @@ export default {
     /**
      * 立即购买
      */
-    buyNow (musicId, price) {
-      this.$toast.loading({
-        forbidClick: true,
-        duration: 0
-      })
-      this.$http({
-        url: this.$http.adornUrl('/p/music/order/buy'),
-        method: 'POST',
-        data: musicId
-      }).then(({ data }) => {
-        this.$toast.clear()
-        console.log(data)
-        sessionStorage.setItem('orderNo', data.orderNo)
-        sessionStorage.setItem('songTotal', price)
-        this.$router.push('/songPay')
-        // this.totalCartNum = this.totalCartNum + this.prodNum
-      })
-    },
+    buyNow (musicId,index) {
+        sessionStorage.setItem('price', this.records[index].price)
+        sessionStorage.setItem('price1',this.records[index].price1)
+        sessionStorage.setItem('musicid',musicId)
+        this.$router.push('/priceSearch')
+      },
+  
 
     /**
     * 获取购物车数量
@@ -413,12 +419,13 @@ export default {
 <style scoped>
 .head-wrap {
   margin-bottom: 6rem;
+  z-index: 1000;
 }
 .head-fixed {
   position: fixed;
   width: 100%;
   background: #fff;
-  z-index: 11;
+  z-index: 1000;
 }
 .song-search {
   /* position: fixed; */
@@ -488,8 +495,8 @@ export default {
 .song-search-li1-img3,
 .song-search-li1-img2 {
   display: inline-block;
-  width: 4vw;
-  height: 4vw;
+  width: 4.5vw;
+  height: 4.5vw;
   vertical-align: bottom;
   vertical-align: middle;
 }
@@ -570,8 +577,8 @@ export default {
 .song-search-list li {
   position: relative;
   margin-left: 3em;
-  padding-top: 20px;
-  padding-bottom: 2em;
+  padding-top: 10px;
+  padding-bottom: 1em;
   text-align: left;
   border-bottom: 1px solid gainsboro;
   background: #fff;
@@ -585,7 +592,7 @@ export default {
   display: inline-block;
   position: absolute;
   left: -3.5em;
-  top: 20px;
+  top: 15px;
   z-index: 5;
 }
 .song-search-top0 {
@@ -605,35 +612,31 @@ export default {
   font-size: 18px;
   position: absolute;
   left: -2em;
-  top: 1.5em;
+  top: 1em;
 }
 .song-search-list-div2 {
-  font-size: 14px;
   display: inline-block;
+  margin-top: 0.6em;
 }
 .song-search-list-div2 p {
-  padding-bottom: 0.8em;
+  padding-bottom: 1em;
   width: 58vw;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-size: 18px;
 }
 .song-search-list-div3 {
   float: right;
 }
 .song-search-list-div3-div {
-  padding-bottom: 0.8em;
+  padding-bottom: 0.2em;
 }
 button {
   background: transparent;
   border: none;
 }
-.song-search-list-div3-div > button {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  margin: 0 0.4em;
-}
+
 .song-search-list-div3-div > button.stop-btn {
   display: none;
 }
@@ -655,21 +658,16 @@ button {
   vertical-align: middle;
 }
 .song-search-list-btn2 {
-  width: 70px;
+  width: 75px;
   height: 28px;
   font-size: 12px;
   color: white;
-  border: 1px solid #02a1e9;
+  border: 1px solid #d6122cd8;
   border-radius: 3px;
-  background-color: #02a1e9;
+  background-color: #d6122cd8;
   font-weight: bold;
 }
-.song-search-li1-img4,
-.song-search-li1-img5 {
-  width: 2em;
-  height: 2em;
 
-}
 /* 价格/热度/难度 */
 .song-search-list-div2-div {
   line-height: 1.5em;
@@ -677,24 +675,41 @@ button {
 
 .windows {
   width: 100%;
-  height: 330px;
+  height: 100%;
   background: white;
-}
+  }
 .window {
-  width: 350px;
-  height: 220px;
+  width: 100%;
+  height: 100%;
   background: white;
 }
-.btn_window {
-  width: 120px;
-  height: 50px;
-  font-size: 15px;
+
+.btn_video {
+  width: 35%;
+  height: 3rem;
+  font-size: 18px;
   color: white;
-  border: 1px solid #02a1e9;
-  border-radius: 3px;
-  font-weight: bold;
-  background-color: #02a1e9;
-  margin-top: 30px;
+  border: 1px solid #077210;
+  border-radius: 8px;
+  background-color: #077210;
+  margin-top: 5%;
+  margin-left: 1em;
+  margin-bottom: 5%;
+
+}
+
+.btn_buy {
+  width: 35%;
+  height: 3rem;
+  font-size: 18px;
+  color: white;
+  border: 1px solid #d63636;
+  border-radius: 8px;
+  background-color: #d63636;
+  margin-top: 5%;
+  margin-right: 1em;
+  margin-bottom: 5%;
+
 }
 
 
@@ -736,9 +751,67 @@ animation: fade 600ms infinite;
 -webkit-animation: fade 600ms infinite;
 }
 #info {
-  margin-top: 30px;
-  font-size: 18px;
+  margin-top: 5%;
+  font-size: 20px;
   color: crimson;
   font-weight: bold;
+  padding-bottom: 30px;
+}
+
+.play{
+  position: absolute;
+  z-index: 100;
+  left: 16em;
+  top: 2.3em;
+
+}
+.play img{
+  width: 3em;
+  height: 3em;
+}
+.word-cart{
+width: 1.5em;
+height: 3em;
+background-color: #02a1e9;
+color: white;
+font-size: 13px;
+display: inline-block;
+-webkit-writing-mode: vertical-rl;
+writing-mode: vertical-rl;
+padding: 0.2em
+}
+.img-cart{
+display: inline-block;
+text-align: center;
+margin-left: 1em;
+}
+
+.song-search-li1-img4{
+width: 4em;
+height: 3em;
+}
+
+
+.close{
+text-align: left;
+margin-top: 15px;
+margin-left: 15px;
+}
+.close img{
+width: 40px;
+height: 40px;
+}
+
+.tips {
+margin-top: 5%;
+font-size: 18px;
+color: rgb(64,79,219);
+line-height: 200%;
+width: 50%;
+margin-left: 25%;
+border: 2px dashed rgb(80, 121, 209);
+
+
+
 }
 </style>

@@ -1,6 +1,5 @@
 <template>
-  <div class="video-main"
-       v-wechat-title="this.title">
+  <div class="video-main">
     <!-- 视频标题 -->
     <div class="video-title">
       <p>{{ videoTitle }}</p>
@@ -13,40 +12,31 @@
                 type="video/mp4">
       </video>
     </div>
-    <!-- 视频列表 -->
+    
+
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide slide-item"
              v-for="(item,index) of videoList"
              @click="changeVideo(index)"
              :key="index">
-          <img :src="item.videoLink + '?vframe/jpg/offset/1/w/120/h/90'"
-               :class="isactive == index ? 'current-red' : '' " />
-          <p class="links-tit">{{ item.videoTitle }}</p>
+          <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title0">{{ item.videoTitle }}</span></div>
         </div>
       </div>
-    </div>
-    <!-- 视频列表end -->
+    </div> 
 
-    <!-- 友情链接 -->
-    <div class="links-box">
-      <div class="friendship-links">
-        <p class="links-title">友情链接</p>
-        <ul class="links-list">
-          <li v-for="(items,index) of linkList"
-              class="links-list-item"
-              :key="index">
-            <a :href="items.link">
-              <img :src="items.pic"
-                   alt="">
-              <p class="links-tit">{{ items.title }}</p>
-            </a>
-          </li>
-        </ul>
-      </div>
+
+
+
+       <div class="garden">
+      <router-link to="garden">
+      <div id="vcenter"><span class="title1">原创音乐</span></div>
+      </router-link>
     </div>
 
-    <v-footer></v-footer>
+
+
+   <v-footer></v-footer>
   </div>
 
 </template>
@@ -59,20 +49,34 @@ export default {
   },
   data () {
     return {
-      title: '视频展示',
       current: 1,
       size: 50,
       videoTitle: '',
-      videoList: [], // 视频列表
+      videoList: [],
       linkList: [],
-      isactive: 0
+      isactive: 0,
+      gardenactive: 0,
+      imglink: [
+        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png',
+        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png',
+        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png',
+      ],
+
+      gardenList: [
+        {videoLink: "http://www.13511351.com/resources/2019/11/f39d735b71624f28ad972c455f739a8e.mp4",
+         videoTitle: "金秋华园",
+         imgLink: "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/huayuan.png"
+        }
+      ]
     }
   },
   created () {
-    this.title = '视频展示'
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
     this.queryVideoDetail() // 视频接口
     this.queryFriendshipLinks() // 友情链接接口
   },
+
+
   methods: {
     /**
      * 点击视频
@@ -85,6 +89,17 @@ export default {
       this.isactive = index
       document.querySelector('#myVideo').play();
     },
+
+
+ changeGarden (index) {
+      var souceHtml = "<source src='" + this.gardenList[index].videoLink + "' type='video/mp4'>"
+      document.querySelector('#myVideo').innerHTML = souceHtml
+      this.videoTitle = this.gardenList[index].videoTitle
+      document.querySelector('#myVideo').load()
+      this.gardenactive = index
+      document.querySelector('#myVideo').play();
+    },
+
 
     videoEnded(){
       var curr = this.isactive;
@@ -144,6 +159,7 @@ export default {
   height: 100%;
   overflow: auto;
   background: #fff;
+  overflow: scroll;
 }
 .foot {
   margin-top: 0;
@@ -155,7 +171,7 @@ export default {
 .video-box {
   box-sizing: border-box;
   width: 100%;
-  height: 70vw;
+  /* height: 70vw; */
   border-bottom: 1px solid rgb(228, 228, 228);
   background: #000;
 }
@@ -177,8 +193,7 @@ export default {
 .swiper-container {
   box-sizing: border-box;
   width: 100%;
-  height: 125px;
-  margin-top: 2em;
+  margin-top: 0.5em;
   z-index: 0;
   overflow: hidden;
 }
@@ -196,7 +211,7 @@ export default {
 .slide-item {
   display: inline-block;
   width: 23.6vw;
-  margin-right: 5px;
+  margin-right: 25px;
   margin-bottom: 1.5em;
 }
 .slide-item > img {
@@ -204,23 +219,21 @@ export default {
   height: 100%;
 }
 .current-red {
-  box-sizing: border-box;
-  border: 2px solid rgb(218, 47, 47);
-  width:calc(100% - 2px)
+  border: 2px solid rgb(218, 47, 47)
 }
 /* 友情链接 */
 .links-box {
   display: block;
   position: fixed;
-  bottom:5em;
+  bottom: 5em;
 }
-@media screen and (max-height: 600px) {
+/* @media screen and (max-height: 600px) {
   .links-box {
     display: block;
     position: relative;
     bottom:5em;
   }
-}
+} */
 .friendship-links {
   box-sizing: border-box;
   /* position: fixed; */
@@ -269,10 +282,107 @@ export default {
 .links-tit {
   height: 1.5em;
   line-height: 1.5em;
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+
+.friend{
+position: absolute;
+right: 10px;
+bottom: 10px;
+}
+
+.friend-link{
+font-size: 13px;
+font-weight: bold;
+}
+
+
+.list {
+margin-left: 0.3em;
+width: 90px;
+height: 50px;
+background: url('https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png');
+background-size: 100px;
+background-repeat: no-repeat;
+}
+
+.type{
+font-weight: bold;
+font-size: 16px;
+text-align: center;
+background: url('https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png');
+background-size: 100px;
+width: 100px;
+height: 100px;
+background-repeat: no-repeat;
+background-position: 50%;
+
+
+}
+
+#vcenter{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/huayuan.png");
+background-size: 100% 100%;
+padding-top: 25px;
+font-weight: bold;
+text-align: center;
+}
+
+
+#vcenter0{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png");
+background-size: 100% 100%;
+padding-top: 25px;
+font-weight: bold;
+text-align: center;
+}
+
+
+#vcenter1{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png");
+background-size: 100% 100%;
+padding-top: 25px;
+font-weight: bold;
+text-align: center;
+}
+
+
+#vcenter2{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png");
+background-size: 100% 100%;
+padding-top: 25px;
+font-weight: bold;
+text-align: center;
+}
+
+.garden{
+text-align: left;
+padding-left:0.3em;
+margin-top:2em;
+}
+
+.title0{
+background-color: rgb(41, 38, 206);
+color: #fff;
+font-size: 16px;
+}
+
+.title1{
+background-color: #fff;
+color: rgb(43, 31, 218);
+font-size: 16px;
 }
 </style>

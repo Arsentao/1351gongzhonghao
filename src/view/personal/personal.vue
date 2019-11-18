@@ -116,6 +116,7 @@ export default {
     }
   },
   created () {
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
     var userinfoStr = localStorage.getItem('userinfo')
     if (userinfoStr) {
       var userInfo = JSON.parse(userinfoStr)

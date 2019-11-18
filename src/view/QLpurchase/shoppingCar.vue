@@ -53,7 +53,7 @@
               @click="onSelAll">全选</span>
         <span class="car-del"
               @click="onDelBasket">删除</span>
-        <p class="total">合计：<span class="goods-price">
+        <p class="total"><span class="price-show">合计</span>&nbsp;<span class="goods-price">
             <i class="sub">￥</i>{{ totalMoney }}</span>
         </p>
         <div class="count-price"
@@ -73,7 +73,7 @@ export default {
   },
   data () {
     return {
-      title: '琴侣-购物车',
+      title: '琴侣 —— 购物车',
       // 购物车列表
       selectList: [],
       allChecked: true,
@@ -85,7 +85,7 @@ export default {
 
   },
   created () {
-    this.title = '琴侣-购物车'
+    this.title = '琴侣 —— 购物车'
     this.loadCarData()
   },
   methods: {
@@ -343,7 +343,7 @@ i.car-select-current {
   font-size: 12px;
 }
 .quant {
-  position: absolute;
+  /* position: absolute; */
   right: 1.5em;
   bottom: 1.2em;
 }

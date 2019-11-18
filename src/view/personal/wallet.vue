@@ -180,7 +180,7 @@ export default {
      */
     rechargeSuccess(){
       this.$dialog.alert({
-        message: '充值成功'
+        message: '充值成功！'
       }).then(() => {
         // 余额
         this.queryMyWallet()

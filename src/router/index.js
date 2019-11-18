@@ -33,6 +33,7 @@ import search from '@/view/forum/forumSearch'
 
 // 页面
 import explain from '@/view/customized/explain'
+import explain1 from '@/view/customized/explain1'
 import customPayment from '@/view/customized/customPayment'
 import filesUpload from '@/view/customized/filesUpload'
 import customPay from '@/view/customized/customPay'
@@ -46,12 +47,33 @@ import songOrders from '@/view/songSearch/songOrders'
 import songOrderList from '@/view/customized/songOrderList'
 import orderDetail from '@/view/QLpurchase/orderDetail'
 import orderList from '@/view/QLpurchase/orderList'
+import token from '@/components/token'
+import priceSearch from '@/view/songSearch/priceSearch'
+import garden from '@/view/videoShow/garden'
+
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/garden',
+      name: 'garden',
+      component: garden,
+      meta: {
+        title: '原创音乐'
+      }
+    },
+    {
+      path: '/priceSearch',
+      name: 'priceSearch',
+      component: priceSearch,
+    },
+    {
+      path: '/token',
+      component: token,
+    },
     {
       path: '/',
       redirect: '/index' // 重定向
@@ -60,7 +82,7 @@ const router = new Router({
       path: '/index',
       component: index,
       meta: {
-        title: '1351'
+        title: '1351 — 轻快学琴 音乐人生'
       }
     },
     // 曲谱购买-曲谱详情
@@ -87,7 +109,7 @@ const router = new Router({
       name: 'goodsDetails',
       component: goodsDetails,
       meta: {
-        title: '琴侣-商品详情'
+        title: '琴侣 —— 商品详情'
       }
     },
     // 琴侣-购物车
@@ -96,7 +118,7 @@ const router = new Router({
       name: 'car',
       component: car,
       meta: {
-        title: '琴侣-购物车'
+        title: '琴侣 —— 购物车'
       }
     },
     // 琴侣-提交订单
@@ -105,7 +127,7 @@ const router = new Router({
       name: 'order',
       component: order,
       meta: {
-        title: '琴侣-提交订单'
+        title: '琴侣 —— 提交订单'
       }
     },
     // 琴侣-地址列表
@@ -141,7 +163,7 @@ const router = new Router({
       name: 'songPay',
       component: songPay,
       meta: {
-        title: '曲谱-订单支付'
+        title: '曲谱 —— 订单支付'
       }
     },
     // 支付成功
@@ -223,7 +245,10 @@ const router = new Router({
     {
       path: '/video',
       name: 'video',
-      component: video
+      component: video,
+      meta: {
+        title: '微型动漫'
+      }
     },
 
     // 其他页面
@@ -281,6 +306,14 @@ const router = new Router({
       path: '/explain',
       name: 'explain',
       component: explain
+    },
+    {
+      path: '/explain1',
+      name: 'explain1',
+      component: explain1 ,
+      meta: {
+        title: '用户定制'
+      }
     },
     {
       path: '/customPayment',

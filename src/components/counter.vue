@@ -75,20 +75,26 @@ export default {
   border: none;
   border-top: 1px solid #e3e3e3;
   border-bottom: 1px solid #e3e3e3;
-  height: 25px;
-  line-height: 25px;
-  width: 25px;
+  height: 35px;
+  line-height: 35px;
+  width: 90px;
   outline: none;
   text-align: center;
-  font-size: 12px;
+  font-size: 30px;
+  font-weight: bold;
+  vertical-align: middle;
+  background-color: lightblue;
+  color: red;
 }
 .counter-btn {
   border: 1px solid #e3e3e3;
   float: left;
-  height: 25px;
-  line-height: 25px;
-  width: 25px;
+  height: 35px;
+  line-height: 35px;
+  width: 65px;
   text-align: center;
   cursor: pointer;
+  font-size: 40px;
+  font-weight: bold;
 }
 </style>

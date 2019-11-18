@@ -1,44 +1,24 @@
 <template>
   <div class="goodsDetails"
        v-wechat-title="this.title">
-    <!-- 上 -->
-    <div class="top-show">
-      <!-- 商品轮播图 -->
+
+
+  
       <div class="swiper">
-        <van-swipe :autoplay="3000"
-                   indicator-color="red">
+        <van-swipe  class="van-swiper" indicator-color="red" :autoplay="10000">
           <van-swipe-item v-for="(image, index) in imgMap"
                           :key="index">
-            <img :src="image">
+            <img v-lazy="image" width="300px" height="300px">
           </van-swipe-item>
         </van-swipe>
       </div>
-      <!-- /商品轮播图 -->
 
-      <!-- 题目 -->
+
       <div class="cnt-box">
         <p class="cnt-tit">{{ prodName }}</p>
-        <p class="cnt-brief">{{ brief }}</p>
-        <p class="cnt-price">￥{{ defaultSku?defaultSku.price.toFixed(2):price }}</p>
       </div>
-      <!-- /题目 -->
+     
 
-      <!-- 规格选择 -->
-      <!-- <div class="specs-choose"
-           v-on:click="onSkuShow">
-        <div class="choosed-msg">
-          <span class="sel">已选</span>
-          <p class="selected">{{selectedProp.length>0?selectedProp+'，':''}}{{prodNum}}件</p>
-          <i class="ellipsis"></i>
-        </div>
-      </div> -->
-      <!-- /规格选择 -->
-
-      <!-- 选择弹框start -->
-      <div class="specs-select-box clearfix">
-        <div class="specs-main">
-          <!-- top -->
-          <!-- 规格板块 -->
           <div class="plate-box">
             <div class="choose-plate"
                  v-for="(item,index) of skuGroup"
@@ -52,28 +32,28 @@
               </div>
             </div>
           </div>
-          <!-- 数量 +/- -->
-          <div class="det-quant clearfix">
+
+          
+            <div class="det-quant clearfix">
             <div class="plate-tit">选择数量</div>
             <v-counter :min="1"
                        :max="100"
                        :number="prodNum"
                        class="v-count"
                        @onNumChange="onNumChange"></v-counter>
-
           </div>
-        </div>
-      </div>
-      <!-- 选择弹框end -->
-    </div>
-    <!-- /上 -->
 
-    <!-- 图文详情 -->
+
+          <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class = "price-show">总价</span> ￥{{totalprice}}</div>
+
+ 
+<!-- 
     <div class="details-con"
          v-html="content"></div>
-    <!-- /图文详情 -->
+ -->
 
-    <!-- 脚部 -->
+
     <det-foot :totalCartNum="totalCartNum"></det-foot>
   </div>
 </template>
@@ -120,12 +100,20 @@ export default {
       // sku相关变量 end
     }
   },
+
+ computed:{
+   totalprice(){
+     return (this.prodNum * this.defaultSku.price).toFixed(2)
+   }
+  },
+
+
   created () {
     this.$toast.loading({
       forbidClick: true,
       duration: 0
     })
-    this.title = '琴侣-商品详情'
+    this.title = '琴侣 —— 商品详情'
 
     this.$http({
       url: this.$http.adornUrl('/prod/prodInfo'),
@@ -349,7 +337,7 @@ export default {
     }
   },
 
-  computed: {}
+
 }
 </script>
 
@@ -362,15 +350,13 @@ export default {
   height: auto;
 }
 .swiper {
+  margin-top: 5%;
   width: 100%;
   max-height: 100vw;
   overflow: hidden;
   box-shadow: 0px 1px 1px #f9f9f9;
 }
-.swiper img {
-  width: 100%;
-  height: 100%;
-}
+
 .img-box {
   width: 100%;
   height: auto;
@@ -380,13 +366,13 @@ export default {
   width: 100%;
 }
 .cnt-box {
-  margin: 0 1.5em;
-  margin-top: 1em;
+  margin: 1em 1.5em;
+
 }
 .cnt-tit {
-  text-align: justify;
-  line-height: 2em;
-  font-size: 16px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
 }
 .cnt-brief {
   text-align: justify;
@@ -397,12 +383,7 @@ export default {
   font-size: 14px;
   margin-top: 3px;
 }
-.cnt-price {
-  text-align: left;
-  padding: 1em 0;
-  color: rgb(185, 0, 0);
-  font-size: 18px;
-}
+
 /* swiper */
 .swiper-slide {
   text-align: center;
@@ -547,54 +528,82 @@ export default {
     line-height: 5em;
 }
 .plate-box{
-  padding: 0 1.5em;
+  margin: 0.5em 1.5em;
 }
 .plate-tit {
-  color: #c4c4c4;
-  padding-right: 1em;
+  color:black;
+  padding-right: 0.5em;
   white-space: nowrap;
+  font-size: 20px;
+  font-size: bold;
 }
-.det-quant .plate-tit{
-    float: left;
-    height: 27px;
-    line-height: 27px;
-}
+
 .block-lst {
   padding:0;
 }
 .block-lst span {
-  padding: 0.5em 1em;
+  padding: 0.5em 2.5em;
   border-radius: 5px;
-  background: rgb(235, 235, 235);
-  color: #000;
   margin-right: 10px;
-      white-space: nowrap;
+  white-space: nowrap;
+  font-size: 16px;
+  font-weight: bold;
+  border: 2px solid #02a1e9;
 }
 .block-lst .active {
-  background: #b90000;
-  color: #fff;
+  background: #02a1e9;
+  border: 2px solid #02a1e9;
 }
-.block-lst .gray {
-  background-color: #f9f9f9;
-  color: #ddd;
+
+
+.silver{
+color: silver;
 }
+
+.red{
+color: red
+}
+
+
 .det-quant {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  height: auto;
-  padding: 1.5em;
+margin: 1.5em 1.5em;
+text-align: left;
+
+}
+.inline {
+text-align: left;
+height: auto;
+}
+.det-quant .plate-tit{
+ display: inline-block
+}
+.cnt-price {
+  text-align: left;
+  color: rgb(185, 0, 0);
+  font-size: 18px;
+  margin: 2em 1em;
+}
+
+.cnt-total {
+  text-align: left;
+  color: rgb(185, 0, 0);
+  font-size: 16px;
+  padding-left: 1.5em;
+  padding-top: 1.5em;
+  padding-bottom: 1em;
 }
 .v-count {
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
 }
 /* 详情图片 */
 .details-con {
-  width: 100vw;
+  width: 80%;
   height: 100%;
-  padding: 2em 0;
-  max-width: 100vw;
-  font-size: 14px;
+  padding-top: 1em;
+  padding-left: 10%;
+  font-size: 16px;
+  color: rgba(20, 92, 187, 0.781);
 }
 .details-con img {
   width: 100vw !important;
@@ -627,5 +636,23 @@ button {
   padding: 1.2em;
   float: left;
   background-color: #02a1e9;
+}
+
+.cnt-tip {
+color:rgba(20, 92, 187, 0.781);
+line-height: 2em;
+font-size: 20px;
+text-align: center;
+}
+
+.van-swiper {
+margin-left: 10%;
+margin-right: 10%;
+}
+
+.price-show{
+padding: 2px;
+color: white;
+background-color: #d93949;
 }
 </style>

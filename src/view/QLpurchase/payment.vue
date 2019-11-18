@@ -2,7 +2,7 @@
   <div class="payment"
        v-wechat-title="this.title">
     <!-- <top-head v-html="headtitle"></top-head> -->
-    <p class="amount">订单总额&nbsp;￥{{ actualTotal }}</p>
+    <p class="amount"><span class="price-show">订单总额</span>&nbsp;￥{{ actualTotal }}</p>
     <div class="pay-method">
       <div :class="['choose-box',payType==0?'active':'']"
            @click="choosePayType(0)">
@@ -19,8 +19,8 @@
         <p class="choose-text">微信支付</p>
       </div>
     </div>
-    <div class="pay-btn"
-         @click="toPay">确认支付</div>
+    <button class="pay-btn"
+         @click="toPay">确认支付</button>
   </div>
 </template>
 
@@ -190,23 +190,23 @@ export default {
   width: 100%;
   height: 45vw;
   line-height: 45vw;
-  font-size: 16px;
+  font-size: 22px;
   color: rgb(185, 0, 0);
   text-align: center;
 }
 .pay-method {
   display: block;
   width: 100%;
-  height: 36vw;
-  line-height: 36vw;
+  height: 60vw;
+  line-height: 60vw;
 }
 .choose-box {
   position: relative;
   display: inline-block;
-  width: 35%;
-  height: 35vw;
+  width: 45%;
+  height: 55vw;
   border: 1px solid #dcdfe6;
-  border-radius: 3px;
+  border-radius: 5px;
   vertical-align: top;
 }
 .choose-box.active {
@@ -214,51 +214,48 @@ export default {
 }
 .choose-icon {
   position: absolute;
-  top: 1.5em;
+  top: 3em;
   left: 50%;
   transform: translateX(-50%);
   display: block;
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
   background: url("../../assets/images/icon/choose-round.png");
-  background-size: 1em 1em;
+  background-size: 2em 2em;
 }
 .choose-box.active .choose-icon {
   background: url("../../assets/images/icon/choosed-blue.png");
-  background-size: 1em 1em;
+  background-size: 2em 2em;
 }
 p.num {
-  font-size: 13px;
+  font-size: 18px;
 }
 p.weixin {
-  height: 35vw;
-  line-height: 42vw;
+  height: 65vw;
+  line-height: 65vw;
 }
 .weixin > img {
   width: 3em;
 }
 .choose-text {
   position: absolute;
-  line-height: 1.5em;
-  bottom: 1.5em;
+  line-height: 1em;
+  bottom: 1em;
   left: 50%;
   transform: translateX(-50%);
+  font-size: 20px;
 }
 .pay-btn {
-  position: absolute;
-  bottom: 50vw;
-  left: 50%;
-  transform: translateX(-50%);
-  display: block;
-  width: 25vw;
-  background-color: transparent;
-  border: 2px solid #dcdfe6;
-  padding: 0.5em 0;
-  font-size: 13px;
+  margin-top: 6em;
+  padding: 0.5em 1em;
+  font-size: 20px;
   border-radius: 5px;
-  outline: none;
+  background-color: crimson;
+  color: white;
+  font-weight: bold;
+  border: 2px solid crimson 
 }
 .pay-btn:active {
-  border: 1px solid #1989fa;
+  border: 2px solid #1989fa;
 }
 </style>

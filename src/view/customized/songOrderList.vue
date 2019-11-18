@@ -21,41 +21,41 @@
             v-for="(item,index) of myCustomOrder"
             :key="index">
           <div class="song-order-list-list-upload-num">
-            <p class="song-order-list-list-upload-num-p1">订单编号：</p>
+            <p class="song-order-list-list-upload-num-p1"><span class="total-show">订单编号</span></p>
             <p class="song-order-list-list-upload-num-p2">{{ item.customizedNo }}</p>
             <!-- 状态state（1：待上传 2：待评估 3：已评估、等待支付 4.待制作 5.已完成、绑定padId 6：发货 7：已取消） -->
-            <p class="song-order-list-list-upload-num-p3">{{ ['待支付评估费','待上传','评估中','待支付','制作中','制作中','已完成','已取消'][item.state] }}</p>
+            <p class="song-order-list-list-upload-num-p3">{{ ['待支付评估费','待上传','费用评估中','待支付','定制中','定制中','已完成','已取消'][item.state] }}</p>
           </div>
           <div class="song-order-list-list-upload-date">
             <p>
-              <span class="song-order-list-list-upload-date-p1">创建时间：</span>
+              <span class="song-order-list-list-upload-date-p1"><span class="total-show">创建时间</span></span>
               <span class="song-order-list-list-upload-date-p2">{{ item.createTime }}</span>
             </p>
             <p v-if="item.uploadTime">
-              <span class="song-order-list-list-upload-date-p1">上传时间：</span>
+              <span class="song-order-list-list-upload-date-p1"><span class="total-show">上传时间</span></span>
               <span class="song-order-list-list-upload-date-p2">{{ item.uploadTime }}</span>
             </p>
             <p v-if="item.assessmentTime">
-              <span class="song-order-list-list-upload-date-p1">评估时间：</span>
+              <span class="song-order-list-list-upload-date-p1"><span class="total-show">评估时间</span></span>
               <span class="song-order-list-list-upload-date-p2">{{ item.assessmentTime }}</span>
             </p>
             <p v-if="item.prodPayTime">
-              <span class="song-order-list-list-upload-date-p1">支付时间：</span>
+              <span class="song-order-list-list-upload-date-p1"><span class="total-show">支付时间</span></span>
               <span class="song-order-list-list-upload-date-p2">{{ item.prodPayTime }}</span>
             </p>
             <p v-if="item.finishTime">
-              <span class="song-order-list-list-upload-date-p1">完成时间：</span>
+              <span class="song-order-list-list-upload-date-p1"><span class="total-show">完成时间</span></span>
               <span class="song-order-list-list-upload-date-p2">{{ item.finishTime }}</span>
             </p>
           </div>
           <div class="song-order-list-list-upload-btn clearfix">
-            <span class="prod-fee" v-if="item.prodFee">制作费：<span class="red">￥{{item.prodFee}}</span></span>
+            <span class="prod-fee" v-if="item.prodFee"><span class="price-show">制作费</span><span class="red">&nbsp;￥{{item.totalFee}}</span><span class="red" v-show="item.totalFee!=item.prodFee">(含{{item.assessmentFee}}元评估费)</span></span>
             <!-- 0、待支付评估费 -->
             <button class="song-order-list-list-upload-btn2" v-show="item.state == 0" @click="toPayAssessment(item.customizedNo, item.assessmentFee)">支付评估费</button>
             <!-- 1、待上传 -->
             <button class="song-order-list-list-upload-btn2" v-show="item.state == 1" @click="toFileUpload(item.customizedNo)">上传材料</button>
             <!-- 3、待支付 -->
-            <button class="song-order-list-list-upload-btn2" v-show="item.state == 3" @click="toPayCustom(item.customizedNo, item.prodFee)">马上付款</button>
+            <button class="song-order-list-list-upload-btn2" v-show="item.state == 3" @click="toPayCustom(item.customizedNo, item.totalFee)">马上付款</button>
             <!-- 4、待制作-->
             <button class="song-order-list-list-upload-btn2" v-show="item.state == 4" @click="confirmPadId(item.customizedNo)">填写琴侣ID</button>
             <!-- 0、待支付评估费   1、待上传  2、待评估  3、待支付 -->
@@ -96,7 +96,7 @@ Vue.use(Popup)
 export default {
   data () {
     return {
-      title: '曲谱定制-订单列表',
+      title: '用户定制2 — 定制列表',
       myCustomOrder: [],
       current: 1, // 当前页
       size: 10,
@@ -111,7 +111,6 @@ export default {
     }
   },
   created () {
-    this.title = '曲谱定制-订单列表'
     window.addEventListener('scroll', this.onScroll)
     this.queryMyList()
 
@@ -232,7 +231,7 @@ export default {
      * 支付评估费
      */
      toPayAssessment(customOrderNo, assessmentFee){
-       sessionStorage.setItem('customFeeType', 1);
+        sessionStorage.setItem('customFeeType', 1);
         sessionStorage.setItem('assessmentType', 2);
         sessionStorage.setItem('assessmentFee', assessmentFee)
         sessionStorage.setItem('customOrderNo', customOrderNo)
@@ -397,14 +396,13 @@ export default {
   width: 6em;
   height: 2.2em;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 12px;
   background-color: white;
 }
 .song-order-list-list-upload-btn .prod-fee{
     text-align: left;
     float: left;
     font-size: 14px;
-
     line-height: 2em;
 }
 .song-order-list-list-upload-btn .prod-fee .red{
@@ -417,7 +415,7 @@ export default {
 }
 .song-order-list-list-upload-btn1 {
   display: inline-block;
-  margin-left: 1.5em;
+  /* margin-left: 1.5em; */
   border: 1px solid rgb(138, 138, 138);
   color: rgb(138, 138, 138);
 }

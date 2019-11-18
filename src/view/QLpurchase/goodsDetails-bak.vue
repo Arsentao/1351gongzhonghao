@@ -160,7 +160,7 @@ export default {
       forbidClick: true,
       duration: 0
     })
-    this.title = '琴侣-商品详情'
+    this.title = '琴侣 —— 商品详情'
 
     this.$http({
       url: this.$http.adornUrl('/prod/prodInfo'),
@@ -616,7 +616,14 @@ export default {
   padding: 2em 0;
   max-width: 100vw;
   font-size: 14px;
+  text-align: left;
 }
+
+.details-con p{
+text-align: left;
+}
+
+
 .details-con img {
   width: 100vw !important;
 }

@@ -25,7 +25,7 @@
           </div>
           <div class="goods-text">
             <p class="order-detail-list1-p1">{{ items.prodName }}</p>
-            <p class="order-detail-list1-p2">规格：{{ items.skuName }}</p>
+            <!-- <p class="order-detail-list1-p2">规格：{{ items.skuName }}</p> -->
             <p class="order-detail-list1-p2">数量：{{ items.prodCount }}</p>
             <p class="order-detail-list1-p4"><i class="sub">￥</i>{{ items.price }}</p>
           </div>
@@ -37,12 +37,12 @@
     <div class="order-detail-num">
       <div class="order-detail-date">
         <div class="order-numbee">
-          <span class="order-detail-date-p1">订单编号：</span>
+          <span class="order-detail-date-p1"><span class="total-show">订单编号</span></span>
           <span class="order-detail-date-p2"
                 id="copytext">{{ orderNumber }}</span>
         </div>
         <div class="order-time">
-          <span class="order-detail-date-p3">下单时间：</span>
+          <span class="order-detail-date-p3"><span class="total-show">下单时间</span></span>
           <span class="order-detail-date-p4">{{ createTime }}</span>
         </div>
         <div class="copy-btn-box">
@@ -53,15 +53,15 @@
       </div>
       <div class="order-detail-fangshi">
         <p class="order-content">
-          <span class="order-content-tit">支付方式：</span>
+          <span class="order-content-tit"><span class="total-show">支付方式</span></span>
           <span class="payment-method">{{ paytype }}</span>
         </p>
         <p class="order-content">
-          <span class="order-content-tit">配送方式：</span>
+          <span class="order-content-tit"><span class="total-show">配送方式</span></span>
           <span class="distribution-mode">普通配送</span>
         </p>
         <p class="order-content">
-          <span class="order-content-tit">订单备注：</span>
+          <span class="order-content-tit"><span class="total-show">订单备注</span></span>
           <span class="order-remarks">{{ remarks }}</span>
         </p>
       </div>
@@ -72,17 +72,17 @@
       <div class="order-detail-price-list1">
         <!-- 总额 -->
         <div class="total-orders clearfix">
-          <span class="order-detail-price-p1">订单总额：</span>
+          <span class="order-detail-price-p1"><span class="price-show">订单总额</span></span>
           <span class="order-detail-price-p3"><i class="sub">￥</i>{{ total }}</span>
         </div>
         <!-- 运费 -->
         <div class="freight clearfix">
-          <span class="order-detail-price-p4">运费：</span>
+          <span class="order-detail-price-p4"><span class="price-show">运费</span></span>
           <span class="order-detail-price-p6"><i class="sub">￥</i>{{ transfee }}</span>
         </div>
       </div>
       <div class="order-detail-price-list2">
-        <span class="order-detail-price-list2-p1">实付款：</span>
+        <span class="order-detail-price-list2-p1"><span class="price-show">实付款</span></span>
         <span class="sub">￥</span>
         <span class="order-detail-price-list2-p3">{{ actualTotal }}</span>
       </div>
@@ -237,7 +237,6 @@ export default {
   position: fixed;
   width: 100%;
   height: 100%;
-  background-color: #f2f2f2;
   z-index: -99;
   overflow: auto;
 }
@@ -396,7 +395,8 @@ export default {
 }
 .order-detail-price-p1,
 .order-detail-price-p4 {
-  float: left;
+  position: absolute;
+  right: 80px;
 }
 .order-detail-price-p3,
 .order-detail-price-p6 {
