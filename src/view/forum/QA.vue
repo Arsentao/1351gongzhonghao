@@ -27,7 +27,6 @@ export default {
     return {
       listlength: 0,
       isindex: 0,
-      title: '服务中心',
       myask: '',
       asklist: [{
         ask: '今天天气如何',
@@ -45,6 +44,11 @@ export default {
     }
   },
   
+
+   created(){
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' })
+   },
+
 
     mounted () {
     this.listlength = this.asklist.length

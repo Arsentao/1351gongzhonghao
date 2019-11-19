@@ -15,9 +15,9 @@
           </router-link>
         </li>
         <li :class="{'curr':navIndex==3}">
-          <router-link to="/forum">
+          <router-link to="/QA">
             <i class="foot-nav-icon foot-nav-forum"></i>
-            <span class="foot-nav-text">交流中心</span>
+            <span class="foot-nav-text">服务中心</span>
           </router-link>
         </li>
         <li :class="{'curr':navIndex==4}"
@@ -45,7 +45,7 @@
           <img :src="item.icon"
                alt=""
                class="side-icon">
-        </a>
+         </a>
       </div>
     </div>
     <div :class="['side-bg', {'open':leftMenuShow}]"
@@ -91,8 +91,8 @@ export default {
           path: '/explain',
           icon: explainPic
         }, {
-          name: '交流中心',
-          path: '/forum',
+          name: '服务中心',
+          path: '/QA',
           icon: forumPic
         }, {
           name: '个人中心',

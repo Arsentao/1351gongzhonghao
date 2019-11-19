@@ -37,6 +37,7 @@ module.exports = {
     "keyword-spacing":0,
     "space-before-function-paren":0,
     "space-before-blocks":0,
-    "key-spacing":0
+    "key-spacing":0,
+    'vue/no-parsing-error': [2, { "x-invalid-end-tag": false }]
   }
 }

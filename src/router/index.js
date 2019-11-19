@@ -61,6 +61,9 @@ const router = new Router({
       path: '/QA',
       name: 'QA',
       component: QA,
+      meta: {
+        title: '服务中心'
+      }
     },
     {
       path: '/garden',
@@ -74,6 +77,9 @@ const router = new Router({
       path: '/priceSearch',
       name: 'priceSearch',
       component: priceSearch,
+      meta: {
+        title: '选择类别'
+      }
     },
     {
       path: '/token',
@@ -105,7 +111,7 @@ const router = new Router({
       name: 'goodsList',
       component: goodsList,
       meta: {
-        title: '琴侣购买'
+        title: '琴侣小店'
       }
     },
     // 琴侣-详情
@@ -262,7 +268,7 @@ const router = new Router({
       name: 'songSearch',
       component: songSearch,
       meta: {
-        title: '曲谱列表'
+        title: '曲库展播'
       }
     },
     {
