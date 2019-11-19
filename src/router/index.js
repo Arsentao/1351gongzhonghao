@@ -50,13 +50,18 @@ import orderList from '@/view/QLpurchase/orderList'
 import token from '@/components/token'
 import priceSearch from '@/view/songSearch/priceSearch'
 import garden from '@/view/videoShow/garden'
-
+import QA from '@/view/forum/QA'
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/QA',
+      name: 'QA',
+      component: QA,
+    },
     {
       path: '/garden',
       name: 'garden',

@@ -2,16 +2,16 @@
   <div class="personal">
     <div class="top-box">
       <div class="top-bg">
-        <img src="../../assets/images/personal/personal_bg.png"
+        <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/person.gif"
              alt="">
       </div>
-      <div class="personal-tit">
+      <!-- <div class="personal-tit">
         {{nickName}}
       </div>
       <div class="my-portraitt">
         <img :src="userPic"
              alt="">
-      </div>
+      </div> -->
     </div>
     <!-- 列表 -->
     <ul class="my-plate">
@@ -202,7 +202,6 @@ ul.my-plate {
   box-sizing: border-box;
   padding: 0 2em;
   color: black;
-  margin-top: 2.5rem;
   margin-bottom: 8em;
 }
 li.plate-item:last-child {
@@ -229,7 +228,7 @@ li.plate-item {
   padding-bottom: 0.1em;
 }
 .plate-name span {
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 1px;
 }
 .open-icon {

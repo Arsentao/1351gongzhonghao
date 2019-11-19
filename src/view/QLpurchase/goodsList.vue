@@ -251,7 +251,7 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 18px;
+  font-size: 20px;
 }
 .cnt-brief {
   font-size: 11px;
@@ -277,13 +277,13 @@ export default {
 }
 .goods-price {
   float: left;
-  padding: 0 0.2em;
+  padding-top: 1em;
   color: rgb(185, 0, 0);
-  font-size: 18px;
+  font-size: 22px;
 }
 .goods-price > i {
   font-style: normal;
-  font-size: 15px;
+  font-size: 22px;
 }
 
 </style>

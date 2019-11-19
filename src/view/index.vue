@@ -73,7 +73,7 @@ export default {
           img: require('../assets/images/homePage/btn_qinlv.png')
         },
         {
-          path: '/forum',
+          path: '/QA',
           img: require('../assets/images/homePage/btn_com.png')
         }
       ]

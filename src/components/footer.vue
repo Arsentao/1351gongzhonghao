@@ -45,7 +45,7 @@
           <img :src="item.icon"
                alt=""
                class="side-icon">
-        <a>
+        </a>
       </div>
     </div>
     <div :class="['side-bg', {'open':leftMenuShow}]"
