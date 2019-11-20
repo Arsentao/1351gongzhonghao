@@ -1,51 +1,60 @@
 <template>
-    <vue-seamless-scroll :data="listData" class="seamless-warp">
-        <ul class="item">
-            <li v-for="item in listData">
-                <span class="title" v-text="item.title"></span><span class="date" v-text="item.date"></span>
-            </li>
-        </ul>
-    </vue-seamless-scroll>
+
+    <div class="text-container">
+      <div class="inner-container">
+        <p class="text" v-for="(text, index) in arr" :key="index">{{text}}</p>
+      </div>
+    </div>
+  
+ 
+ 
 </template>
-<style scoped>
-    .seamless-warp {
-        height: 229px;
-        overflow: hidden;
-    }
-</style>
+
 <script>
-    export default {
-        data () {
-            return {
-                listData: [{
-                   'title': '无缝滚动第一行无缝滚动第一行',
-                   'date': '2017-12-16'
-                 }, {
-                    'title': '无缝滚动第二行无缝滚动第二行',
-                    'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第三行无缝滚动第三行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第四行无缝滚动第四行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第五行无缝滚动第五行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第六行无缝滚动第六行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第七行无缝滚动第七行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第八行无缝滚动第八行',
-                     'date': '2017-12-16'
-                 }, {
-                     'title': '无缝滚动第九行无缝滚动第九行',
-                     'date': '2017-12-16'
-                 }]
-                }
-            }
-       }
+  
+  export default {
+    data() {
+      return {
+        arr: [
+          '1 不是被郭德纲发现的，也不是一开始就收为徒弟。',
+          '2 现在雅阁这个状态像极了新A4L上市那段日子。',
+          '3 低配太寒碜，各种需要加装，中配定价过高，又没啥特色',
+          '4 然后各种机油门、经销商造反什么的幺蛾子。',
+          '5 看五月销量，建议参考A4，打8折吧。',
+        ],
+       
+      }
+    },
+   
+    
+  
+   
+  }
 </script>
+
+<style scoped>
+
+  .text-container {
+    width: 350px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px auto;
+    overflow: hidden;
+  }
+
+  .inner-container {
+    animation: myMove 5s linear infinite;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes myMove {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-150px);
+    }
+  }
+
+ 
+</style>

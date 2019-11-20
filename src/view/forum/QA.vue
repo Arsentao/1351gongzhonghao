@@ -1,15 +1,20 @@
 <template>
      <div class="QA">
+        <div class="hidden" :style="{'height':height}">
+           <div class="inner-container" :style="{'animation-duration':duration}">
+       <div class="gundong" v-for="(item,index) in postList" :key="index">
         <div class="Q">
               <div class="img"><img class="img-ask" src="../../assets/images/forum/ask.jpg"></div>
-              <span class="span-ask">{{postList[isindex].postContent}}</span>
+              <span class="span-ask">{{item.postContent}}</span>
         </div>
         <div class="A">         
               <div class="img"><img class="img-answer" src="../../assets/images/forum/answer.jpg"></div>
-              <span class="span-answer">{{postList[isindex].answer}}</span>  
+              <span class="span-answer">{{item.answer}}</span>  
         </div>
-        {{this.listlength}}
-        {{this.isindex}}
+       </div>
+        </div>
+        </div>
+
         <div class="ask-box">
               <input class="text" type="text" v-model="myask" placeholder="请在此输入您的问题">
               <button class="send" @click="send()">发送
@@ -27,18 +32,24 @@ export default {
   },
   data () {
     return {
+      height : document.documentElement.clientHeight * 0.6 + 'px',
       listlength: 0,
-      isindex: 0,
       myask: '',
-      postList: []
+      postList: [],
     }
   },
   
+   
+  computed:{
+    duration(){
+    return this.listlength * 2 + 's'
+    }
+  },
+
 
    created(){
     this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' })
     this.queryPostList()
-    setInterval(this.changelist, 3000)
    },
 
 
@@ -66,14 +77,6 @@ export default {
       })
     },
 
-    changelist(){
-      if (this.isindex < this.listlength - 1){
-      this.isindex = this.isindex + 1
-      }
-      else {
-      this.isindex = 0
-      }
-    },
 
     send(){
       if(this.myask == ''){
@@ -112,6 +115,24 @@ export default {
 </script>
 
 <style>
+.inner-container {
+animation: myMove linear infinite;
+animation-fill-mode: forwards;
+}
+
+@keyframes myMove {
+0% {
+transform: translateY(0);
+}
+100% {
+transform: translateY(-1500px);
+}
+}
+
+.hidden{
+width: 100%;
+overflow: hidden;
+}
 .img{
 display: inline-block;
 }
@@ -159,7 +180,7 @@ word-break:break-all;
 }
 .ask-box{
 position: absolute;
-bottom: 15%;
+bottom: 13%;
 width: 100%;
 text-align: left;
 }
