@@ -30,7 +30,7 @@
 
        <div class="garden">
       <router-link to="garden">
-      <div id="vcenter"><span class="title">&nbsp;&nbsp;&nbsp;原创音乐&nbsp;&nbsp;&nbsp;</span></div>
+      <div id="vcenter"><span class="title">&nbsp;&nbsp;原创音乐夹&nbsp;&nbsp;</span></div>
       </router-link>
     </div>
 

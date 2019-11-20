@@ -51,12 +51,26 @@ import token from '@/components/token'
 import priceSearch from '@/view/songSearch/priceSearch'
 import garden from '@/view/videoShow/garden'
 import QA from '@/view/forum/QA'
+import gundong from '@/view/forum/gundong'
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/QA',
+      name: 'QA',
+      component: QA,
+      meta: {
+        title: '服务中心'
+      }
+    },
+    {
+      path: '/gundong',
+      name: 'gundong',
+      component: gundong
+    },
     {
       path: '/QA',
       name: 'QA',

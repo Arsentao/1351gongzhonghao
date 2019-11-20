@@ -10,6 +10,8 @@ import { Toast, Dialog, Popup, Button, Checkbox, CheckboxGroup, Notify, Icon, Ra
 import 'vant/lib/index.css'
 import VueWechatTitle from 'vue-wechat-title'
 import './style.css'
+import scroll from 'vue-seamless-scroll'
+Vue.use(scroll)
 Vue.use(Vuex)
 Vue.use(VueWechatTitle).use(Toast).use(Dialog).use(Popup).use(Cell).use(CellGroup).use(Lazyload)
 .use(Button).use(Checkbox).use(CheckboxGroup).use(Notify).use(Icon).use(Radio).use(RadioGroup)
