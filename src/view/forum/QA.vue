@@ -14,7 +14,6 @@
        </div>
         </div>
         </div>
-
         <div class="ask-box">
               <input class="text" type="text" v-model="myask" placeholder="请在此输入您的问题">
               <button class="send" @click="send()">发送
@@ -39,21 +38,16 @@ export default {
     }
   },
   
-   
   computed:{
     duration(){
     return this.listlength * 2 + 's'
     }
   },
 
-
    created(){
     this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' })
     this.queryPostList()
    },
-
-
-
 
     methods:{
      queryPostList () {
@@ -76,7 +70,6 @@ export default {
         this.listlength = this.postList.length
       })
     },
-
 
     send(){
       if(this.myask == ''){
@@ -125,7 +118,7 @@ animation-fill-mode: forwards;
 transform: translateY(0);
 }
 100% {
-transform: translateY(-1500px);
+transform: translateY(-2000px);
 }
 }
 
