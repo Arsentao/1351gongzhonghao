@@ -31,24 +31,19 @@ export default {
   },
   data () {
     return {
-      height : document.documentElement.clientHeight * 0.6 + 'px',
+      height : document.documentElement.clientHeight * 0.7 + 'px',
       listlength: 0,
       myask: '',
       postList: [],
+      duration: '39s'
     }
   },
   
-  computed:{
-    duration(){
-    return this.listlength * 2 + 's'
-    }
-  },
 
    created(){
     this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' })
     this.queryPostList()
    },
-
     methods:{
      queryPostList () {
       this.$toast.loading({
@@ -70,7 +65,6 @@ export default {
         this.listlength = this.postList.length
       })
     },
-
     send(){
       if(this.myask == ''){
         return 
@@ -94,7 +88,7 @@ export default {
         this.$toast.clear()
         this.$dialog.alert({
           title:"提问成功！",
-          message: '等待后台审核'
+          message: '收到，尽快回复您'
         }).then(() => {
           this.$router.push('/QA')
           this.myask = ''
@@ -103,28 +97,30 @@ export default {
     }
       }
     }
-
 }
 </script>
 
-<style>
+<style scoped>
 .inner-container {
 animation: myMove linear infinite;
 animation-fill-mode: forwards;
 }
-
 @keyframes myMove {
 0% {
 transform: translateY(0);
 }
+87% {
+transform: translateY(-1950px);
+}
 100% {
-transform: translateY(-2000px);
+transform: translateY(-1950px);
 }
 }
-
 .hidden{
+margin-top: 20%;
 width: 100%;
 overflow: hidden;
+overflow-y: scroll;
 }
 .img{
 display: inline-block;
@@ -152,7 +148,7 @@ display: inline-block;
 padding: 10px;
 text-align: left;
 font-size: 20px;
-background-color: #7cfc00;;
+background-color: #d34141;;
 border-radius: 10%;
 max-width: 50%;
 border: 2px solid rgb(231, 223, 223);
@@ -164,7 +160,7 @@ display: inline-block;
 padding: 10px;
 text-align: left;
 font-size: 20px;
-background-color: #7cfc00;;
+background-color: #3197d3;;
 border-radius: 10%;
 max-width: 50%;
 border: 2px solid rgb(231, 223, 223);
@@ -173,7 +169,7 @@ word-break:break-all;
 }
 .ask-box{
 position: absolute;
-bottom: 13%;
+top: 0%;
 width: 100%;
 text-align: left;
 }
@@ -207,5 +203,11 @@ color: white;
 }
 input::-ms-input-placeholder {
 color: white;
+}
+</style>
+
+<style>
+.van-dialog__content .van-dialog__message{
+font-size: 18px;
 }
 </style>

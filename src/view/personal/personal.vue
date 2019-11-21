@@ -2,7 +2,7 @@
   <div class="personal">
     <div class="top-box">
       <div class="top-bg">
-        <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/person.gif"
+        <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BB11-21.gif"
              alt="">
       </div>
       <!-- <div class="personal-tit">

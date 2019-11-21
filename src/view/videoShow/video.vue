@@ -20,7 +20,7 @@
              v-for="(item,index) of videoList"
              @click="changeVideo(index)"
              :key="index">
-          <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title">&nbsp;{{ item.videoTitle }}&nbsp;</span></div>
+          <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title">&nbsp;&nbsp;{{ item.videoTitle }}&nbsp;&nbsp;</span></div>
         </div>
       </div>
     </div> 
@@ -30,7 +30,7 @@
 
        <div class="garden">
       <router-link to="garden">
-      <div id="vcenter"><span class="title">&nbsp;&nbsp;原创音乐夹&nbsp;&nbsp;</span></div>
+      <div id="vcenter"><span class="title" style="color:red">&nbsp;&nbsp;原创音乐夹&nbsp;&nbsp;</span></div>
       </router-link>
     </div>
 
