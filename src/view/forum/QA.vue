@@ -35,7 +35,7 @@ export default {
       listlength: 0,
       myask: '',
       postList: [],
-      duration: '39s'
+      duration: '38s'
     }
   },
   
@@ -87,8 +87,7 @@ export default {
       }).then(({ data }) => {
         this.$toast.clear()
         this.$dialog.alert({
-          title:"提问成功！",
-          message: '收到，尽快回复您'
+          title:"收到，尽快回复您",
         }).then(() => {
           this.$router.push('/QA')
           this.myask = ''
@@ -104,16 +103,17 @@ export default {
 .inner-container {
 animation: myMove linear infinite;
 animation-fill-mode: forwards;
+animation-delay: 2s;
 }
 @keyframes myMove {
 0% {
 transform: translateY(0);
 }
 87% {
-transform: translateY(-1950px);
+transform: translateY(-1900px);
 }
 100% {
-transform: translateY(-1950px);
+transform: translateY(-1900px);
 }
 }
 .hidden{
