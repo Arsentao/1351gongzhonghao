@@ -144,26 +144,28 @@ width: 40px;
 height: 40px;
 }
 .span-ask{
+color: red;
 display: inline-block;
 padding: 10px;
 text-align: left;
 font-size: 20px;
-background-color: #d34141;;
+background-color: white;
 border-radius: 10%;
-max-width: 50%;
-border: 2px solid rgb(231, 223, 223);
+max-width: 70%;
+border: 2px solid red;
 box-shadow: 0 0 3px rgb(231, 223, 223);
 word-break:break-all;
 }
 .span-answer{
+color: blue;
 display: inline-block;
 padding: 10px;
 text-align: left;
 font-size: 20px;
-background-color: #3197d3;;
+background-color: white;
 border-radius: 10%;
-max-width: 50%;
-border: 2px solid rgb(231, 223, 223);
+max-width: 70%;
+border: 2px solid blue;
 box-shadow: 0 0 3px rgb(231, 223, 223);
 word-break:break-all;
 }
