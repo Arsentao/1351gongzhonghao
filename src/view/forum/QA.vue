@@ -116,12 +116,17 @@ transform: translateY(-1900px);
 transform: translateY(-1900px);
 }
 }
+
+
 .hidden{
 margin-top: 20%;
 width: 100%;
 overflow: hidden;
 overflow-y: scroll;
+background: url("../../assets/images/homePage/logo2.png");
+background-size: 100% 50%;
 }
+
 .img{
 display: inline-block;
 }
