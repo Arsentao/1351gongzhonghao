@@ -40,7 +40,12 @@
 
 
 
-    <foot-nav :navIndex="1"></foot-nav>
+    <footer style="color:black;padding-bottom:20px;">
+<p>备案号:<a class="beian" style="color:red;display:inline;" href="http://beian.miit.gov.cn">粤ICP备13069893号-5</a></p>
+  <p>Copyright © 2009-2018,www.phonpad.com<br/>版权所有 © 广州丰谱信息技术有限公司 未经许可 严禁复制</p>
+    </footer>
+
+
   </div>
 </template>
 <script>
@@ -56,7 +61,7 @@ export default {
       pages: [
          {
           path: '/video',
-          img: require('../assets/images/homePage/btn_video.png')
+          img: require('../assets/images/homePage/btn_video1.png')
         },{
           path: '/personal',
           img: require('../assets/images/homePage/btn_personal1.png')
@@ -152,7 +157,7 @@ img.menu-btn {
   border-radius: 40vw;
 }
 .wavebg-0 {
-  background: url("../assets/images/homePage/btn_video.png");
+  background: url("../assets/images/homePage/btn_video1.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;
@@ -248,14 +253,5 @@ img.menu-btn {
 /** 水波纹end */
 
 
-.van-uploader__preview-delete{
-    position: absolute;
-    top: -8px;
-    right: -1px;
-    color: #969799;
-    font-size: 18px;
-    background-color: #fff;
-    border-radius: 100%;
-}
 
 </style>

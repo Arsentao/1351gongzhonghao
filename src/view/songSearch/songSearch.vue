@@ -100,12 +100,22 @@
             </div>
           </div>
 
-          <div class="play">
+          <!-- <div class="play">
           <img src="../../assets/images/icon/play.png"
                      alt=""
                      @click="showPopup(item.auditionUrl)"
                      class="song-search-li1-img5">
+          </div> -->
+
+
+
+            <div class="play">
+          <img src="../../assets/images/icon/play.png"
+                     alt=""
+                     class="song-search-li1-img5">
           </div>
+
+
 
 
           <div class="song-search-list-div3">
