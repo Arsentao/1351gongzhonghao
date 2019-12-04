@@ -67,7 +67,7 @@ export default {
           img: require('../assets/images/homePage/btn_personal1.png')
         },
         {
-          path: '/songSearch',
+          path: '/knowledge',
           img: require('../assets/images/homePage/btn_order.png')
         },  {
           path: '/explain1',

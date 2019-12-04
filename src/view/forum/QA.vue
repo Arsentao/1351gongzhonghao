@@ -123,8 +123,8 @@ margin-top: 20%;
 width: 100%;
 overflow: hidden;
 overflow-y: scroll;
-background: url("../../assets/images/homePage/logo2.png");
-background-size: 100% 50%;
+background: url("../../assets/images/homePage/logo2.jpg");
+background-size: 100% 100%;
 }
 
 .img{

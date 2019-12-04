@@ -52,12 +52,22 @@ import priceSearch from '@/view/songSearch/priceSearch'
 import garden from '@/view/videoShow/garden'
 import QA from '@/view/forum/QA'
 import gundong from '@/view/forum/gundong'
+import knowledge from '@/view/songSearch/knowledge'
+
 
 Vue.use(Router)
 
 const router = new Router({
   mode: 'history',
   routes: [
+    {
+      path: '/knowledge',
+      name: 'knowledge',
+      component: knowledge,
+      meta: {
+        title: '乐谱知识'
+      }
+    },
     {
       path: '/QA',
       name: 'QA',
