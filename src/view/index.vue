@@ -41,8 +41,8 @@
 
 
     <footer style="color:black;padding-bottom:20px;">
-<p>备案号:<a class="beian" style="color:red;display:inline;" href="http://beian.miit.gov.cn">粤ICP备13069893号-5</a></p>
-  <p>Copyright © 2009-2018,www.phonpad.com<br/>版权所有 © 广州丰谱信息技术有限公司 未经许可 严禁复制</p>
+<p>备案号：<a class="beian" style="color:red;display:inline;" href="http://beian.miit.gov.cn">粤ICP备13069893号-5</a></p>
+  <p>Copyright © 2009-2019，www.phonpad.com<br/>版权所有 © 广州丰谱信息技术有限公司 未经许可 严禁复制</p>
     </footer>
 
 
@@ -61,13 +61,13 @@ export default {
       pages: [
          {
           path: '/video',
-          img: require('../assets/images/homePage/btn_video1.png')
+          img: require('../assets/images/homePage/btn_video.png')
         },{
           path: '/personal',
           img: require('../assets/images/homePage/btn_personal1.png')
         },
         {
-          path: '/knowledge',
+          path: '/songSearch',
           img: require('../assets/images/homePage/btn_order.png')
         },  {
           path: '/explain1',
@@ -157,7 +157,7 @@ img.menu-btn {
   border-radius: 40vw;
 }
 .wavebg-0 {
-  background: url("../assets/images/homePage/btn_video1.png");
+  background: url("../assets/images/homePage/btn_video.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;

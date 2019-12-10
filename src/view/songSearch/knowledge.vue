@@ -66,19 +66,20 @@ border-bottom: 1px solid #dee3e7de;
 }
 
 .title{
-font-size: 18px;
+font-size: 20px;
 float: left;
-padding-top:20px;
-padding-bottom: 20px;
-padding-left: 10px;
+padding-top:25px;
+padding-bottom: 25px;
+padding-left: 15px;
 color: crimson;
 font-weight: bold;
+letter-spacing: 2px;
 }
 .know{
 font-size: 18px;
 float: right;
 margin-right: 10px;
-margin-top: 15px;
+margin-top: 20px;
 padding: 5px;
 background-color: rgb(70, 157, 228);
 color: white;

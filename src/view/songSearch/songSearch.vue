@@ -1,6 +1,24 @@
 <template>
   <div class="song-search">
 
+
+
+  <van-dialog
+      v-model="popshow" show-confirm-button
+      confirm-button-text="继续">
+          <div class="wenxin-div">
+        <span class="wenxin-span">温馨提示</span>
+        <p class="wenxin-p">本曲库仅提供版权已公开的曲目</p>
+        <p class="wenxin-p">如有遗漏</p>
+        <p class="wenxin-p">请拥有本栏目</p>
+        <p class="wenxin-p">任何作品版权的个人或组织</p>
+        <p class="wenxin-p">联系本站支付版权费用</p>
+      </div>
+    </van-dialog>
+
+
+
+
   <van-popup v-model="show" round id="pop" style="width:100%">
     <div class="windows" v-show="ifshow">
        <div class="close">
@@ -100,28 +118,24 @@
             </div>
           </div>
 
-          <!-- <div class="play">
+          <div class="play">
           <img src="../../assets/images/icon/play.png"
                      alt=""
                      @click="showPopup(item.auditionUrl)"
-                     class="song-search-li1-img5">
-          </div> -->
-
-
-
-            <div class="play">
-          <img src="../../assets/images/icon/play.png"
-                     alt=""
                      class="song-search-li1-img5">
           </div>
 
 
 
+       
+
+
+
 
           <div class="song-search-list-div3">
-            <div :class="['song-search-list-div3-div',{'playing':item.musicId==curMusicId}]">
-              <!-- 加购 -->
 
+
+            <!-- <div :class="['song-search-list-div3-div',{'playing':item.musicId==curMusicId}]">
               <div class="img-cart">
               <button v-on:click.stop="addToCart(item.musicId)"
                       v-if="totalCartNum>=0">
@@ -130,11 +144,9 @@
                      class="song-search-li1-img4">
               </button>
                 </div>
+            </div> -->
 
-          
 
-           
-            </div>
             <button class="song-search-list-btn2" v-if="item.price!=0"
                      v-on:click.stop="buyNow(item.musicId,index)">立即购买</button>
               <router-link to="/goodsDetails/89" v-if="item.price==0">
@@ -167,7 +179,6 @@ export default {
   components: {
     footNav
   },
-  title: '曲谱列表',
   totalCartNum: {
     type: Number,
     default: 0
@@ -196,7 +207,8 @@ export default {
       VideoUrl: '',
       ifshow: false,
       format: '',
-      theshow: false
+      theshow: false,
+      popshow: false
     }
   },
   created () {
@@ -204,6 +216,7 @@ export default {
     window.addEventListener('scroll', this.onScroll)
     this.loading = true
     this.show = true
+    this.popshow = true
     this.queryMusicList(1)
   },
   methods: {
@@ -227,6 +240,8 @@ export default {
       document.querySelector('#myVideo').load()
       }
       },
+
+     
 
     //离开弹窗
     leave(){
@@ -252,7 +267,6 @@ export default {
       })
       var audioId = 'myAudio' + musicId
       var audio = this.$refs[audioId][0]
-      // console.log(audio);
       let playPromise
       playPromise = audio.play()
       var that = this
@@ -676,6 +690,7 @@ button {
   border-radius: 3px;
   background-color: #d6122cd8;
   font-weight: bold;
+  margin-top: 20px;
 }
 
 /* 价格/热度/难度 */

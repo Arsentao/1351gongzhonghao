@@ -73,7 +73,7 @@
 export default {
   data () {
     return {
-      title: '琴侣 —— 我的订单',
+      title: '琴侣订单',
       orderLists: [],
       selStatus: 0,
       totalPage: 1,
@@ -83,7 +83,7 @@ export default {
     }
   },
   created () {
-    this.title = '琴侣 —— 我的订单'
+    this.title = '琴侣订单'
     // 请求信息
     this.loadPageData(1)
   },

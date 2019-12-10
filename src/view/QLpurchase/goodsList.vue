@@ -23,6 +23,8 @@
     </div>
     <!-- /头部搜索框 -->
 
+
+
     <ul class="goods">
       <router-link tag="li"
                    :to="'/goodsDetails/' + items.prodId"
@@ -46,6 +48,11 @@
         </div>
       </router-link>
     </ul>
+    <div class="info">
+      <p class="detail">两件以上包邮</p>
+      <p class="detail">十件95折</p>
+      <p class="detail">二十件92折</p>
+    </div>
     <div class="prompt"
          v-if="totalPage>1">
       <span>{{loadingMsg}}</span>
@@ -285,5 +292,14 @@ export default {
   font-style: normal;
   font-size: 22px;
 }
-
+.info{
+margin-top: 10%;
+font-size: 18px;
+color: rgb(29, 82, 179);
+width: 60%;
+border: 2px dashed rgb(29, 82, 179);
+text-align: center;
+line-height: 200%;
+margin-left: 20%;
+}
 </style>

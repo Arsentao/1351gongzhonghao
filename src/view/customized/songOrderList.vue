@@ -1,6 +1,16 @@
 <template>
   <div class="song-order-list-main"
        v-wechat-title="this.title">
+
+    <van-popup v-model="show" round class="pop" closeable close-icon-position="top-left">
+         <van-swipe  class="van-swiper" indicator-color="red" :autoplay="10000">
+          <van-swipe-item v-for="(image, index) in imglist"
+                          :key="index">
+            <img v-lazy="image" width="200px" height="200px">
+          </van-swipe-item>
+        </van-swipe>
+    </van-popup>
+
     <div class="song-order-list-header">
       <ul>
         <li :class="{ 'li-active': status === -1 }"
@@ -51,7 +61,7 @@
           <div class="song-order-list-list-upload-btn clearfix">
             <span class="prod-fee" v-if="item.prodFee"><span class="price-show">制作费</span><span class="red">&nbsp;￥{{item.totalFee}}</span><span class="red" v-show="item.totalFee!=item.prodFee">(含{{item.assessmentFee}}元评估费)</span></span>
             <!-- 0、待支付评估费 -->
-            <button class="song-order-list-list-upload-btn2" v-show="item.state == 0" @click="toPayAssessment(item.customizedNo, item.assessmentFee)">支付评估费</button>
+            <button class="song-order-list-list-upload-btn2" v-show="item.state == 2 || item.state == 3 || item.state == 4 || item.state == 5 || item.state == 6" @click="seephoto(item.id)">查看材料</button>
             <!-- 1、待上传 -->
             <button class="song-order-list-list-upload-btn2" v-show="item.state == 1" @click="toFileUpload(item.customizedNo)">上传材料</button>
             <!-- 3、待支付 -->
@@ -96,7 +106,7 @@ Vue.use(Popup)
 export default {
   data () {
     return {
-      title: '用户定制2 — 定制列表',
+      title: '定制订单',
       myCustomOrder: [],
       current: 1, // 当前页
       size: 10,
@@ -107,7 +117,9 @@ export default {
       status: -1 ,// 订单状态
       popupShow:false,
       padId:localStorage.getItem('lastPadId'),
-      customOrderNo:""
+      customOrderNo:"",
+      imglist: [],
+      show: false
     }
   },
   created () {
@@ -148,6 +160,25 @@ export default {
       this.current = 1
       this.queryMyList()
     },
+  
+
+
+    // 查看上传材料
+   seephoto(id){
+      this.$http({
+          url: this.$http.adornUrl('/p/musicCustomized/info?musicCustomizedId=' + id),
+          method: 'get'
+        }).then(({ data }) => {
+            this.imglist = data.split(",")
+            for(var i=0;i<this.imglist.length;i++){
+            this.imglist[i] = "http://www.13511351.com/resources/" + this.imglist[i]
+            }
+        })
+        console.log(this.imglist)
+        this.show = true
+   },
+   
+  
 
     /**
      * 取消订单
@@ -481,5 +512,13 @@ export default {
   margin-bottom: 2em;
   font-size: 14px;
 }
-/* 弹框 end */
+.pop{
+width: 300px;
+height: 300px;
+top: 50%;
+}
+.van-swiper{
+margin-top: 50px
+}
+
 </style>

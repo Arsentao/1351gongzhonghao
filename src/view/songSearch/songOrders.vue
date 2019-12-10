@@ -98,7 +98,7 @@ Vue.use(Popup)
 export default {
   data () {
     return {
-      title: '曲谱购买 —— 订单列表',
+      title: '曲谱订单',
       orderLists: [],
       status: 0,
       count: 0,

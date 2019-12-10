@@ -20,7 +20,8 @@
              v-for="(item,index) of videoList"
              @click="changeVideo(index)"
              :key="index">
-          <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title">&nbsp;&nbsp;{{ item.videoTitle }}&nbsp;&nbsp;</span></div>
+          <!-- <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title">&nbsp;&nbsp;{{ item.videoTitle }}&nbsp;&nbsp;</span></div> -->
+        <img :src="poster[index]" width="100px"  :class="{'current-red':index == isactive}">
         </div>
       </div>
     </div> 
@@ -30,7 +31,7 @@
 
        <div class="garden">
       <router-link to="garden">
-      <div id="vcenter"><span class="title" style="color:red">&nbsp;&nbsp;原创示范夹&nbsp;&nbsp;</span></div>
+      <img src="https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/5.png" width="100px" height="75px">
       </router-link>
     </div>
 
@@ -56,17 +57,17 @@ export default {
       linkList: [],
       isactive: 0,
       gardenactive: 0,
-      imglink: [
-        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png',
-        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png',
-        'https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png',
-      ],
-
       gardenList: [
         {videoLink: "http://www.13511351.com/resources/2019/11/f39d735b71624f28ad972c455f739a8e.mp4",
          videoTitle: "金秋华园",
          imgLink: "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/huayuan.png"
         }
+      ],
+      poster: [
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png",
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png",
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png",
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png"
       ]
     }
   },
@@ -367,6 +368,17 @@ padding-top: 25px;
 font-weight: bold;
 text-align: center;
 }
+
+#vcenter3{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png");
+background-size: 100% 100%;
+padding-top: 25px;
+font-weight: bold;
+text-align: center;
+}
+
 
 .garden{
 text-align: left;

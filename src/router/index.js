@@ -65,7 +65,7 @@ const router = new Router({
       name: 'knowledge',
       component: knowledge,
       meta: {
-        title: '乐谱知识'
+        title: '鸟然谱库'
       }
     },
     {
@@ -117,7 +117,7 @@ const router = new Router({
       path: '/index',
       component: index,
       meta: {
-        title: '1351 — 轻快学琴 音乐人生'
+        title: '新概念学琴'
       }
     },
     // 曲谱购买-曲谱详情
@@ -282,7 +282,7 @@ const router = new Router({
       name: 'video',
       component: video,
       meta: {
-        title: '微型动漫'
+        title: '琴侣微漫'
       }
     },
 
@@ -292,7 +292,7 @@ const router = new Router({
       name: 'songSearch',
       component: songSearch,
       meta: {
-        title: '曲库展播'
+        title: '鸟然谱库'
       }
     },
     {
@@ -312,18 +312,16 @@ const router = new Router({
       path: '/orderList',
       name: 'orderList',
       component: orderList,
-      meta: {
-        title: '我的订单'
-      }
     },
     {
       path: '/songOrderList',
       name: 'songOrderList',
       component: songOrderList,
       meta: {
-        title: '我的订单'
+        title: '定制订单'
       }
     },
+    
     {
       path: '/songOrders',
       name: 'songOrders',
@@ -363,7 +361,10 @@ const router = new Router({
     {
       path: '/wallet',
       name: 'wallet',
-      component: wallet
+      component: wallet,
+      meta: {
+        title: '我的钱包'
+      }
     },
     {
       path: '/friends',

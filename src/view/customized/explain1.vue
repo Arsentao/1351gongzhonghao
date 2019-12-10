@@ -1,5 +1,22 @@
 <template>
 <div class="explain">
+
+
+  <van-dialog
+      v-model="popshow" show-confirm-button show-cancel-button
+      confirm-button-text="接受"
+      cancel-button-text="不接受"
+      @cancel="disagree" class="pop">
+      <div class="wenxin-div">
+        <span class="wenxin-span">温馨提示</span>
+        <p class="wenxin-p">本定制作品仅用于个人学习音乐</p>
+        <p class="wenxin-p">未经著作权许可</p>
+        <p class="wenxin-p">不得用于任何有偿活动</p>
+      </div>
+    </van-dialog>
+
+
+
   <div class="flash">
     <video autoplay loop poster x5-playsinline="true" preload="auto" 
     x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true"
@@ -37,13 +54,16 @@ export default {
   data () {
     return {
       assessmentFee: 0,
-      checked: false
+      checked: false,
+      popshow: false
     }
   },
   created () {
-    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
+    this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' })
+    this.popshow = true
     this.queryCosts()
     document.querySelector('#cartoon').load()
+   
   },
   methods: {
     /**
@@ -62,6 +82,11 @@ export default {
         this.$toast.clear();
         this.assessmentFee = data
       })
+    },
+
+
+    disagree(){
+    this.$router.push('/index')
     },
 
 
@@ -147,16 +172,16 @@ ul.explain > li {
 }
 /* 按钮 */
 .conserve-btn {
-  margin-top: 3em;
-  width: 56vw;
-  height: 3.5em;
-  line-height: 3.5em;
-  color: #fff;
-  border: none;
-  background: url("../../assets/images/icon/btn-bright.png") no-repeat left top;
-  background-size: 56vw 3.7em;
-  outline: none;
-  font-size: 20px;
+margin-top: 3em;
+width: 56vw;
+height: 3.5em;
+line-height: 3.5em;
+color: #fff;
+border: none;
+background: url("../../assets/images/icon/btn-bright.png") no-repeat left top;
+background-size: 56vw 3.7em;
+outline: none;
+font-size: 20px;
 }
 .issue {
 text-align: center;
@@ -173,12 +198,15 @@ margin-bottom: 20px;
 text-align: center;
 }
 .issue p {
-font-size: 18px;
+font-size: 15px;
 line-height: 200%;
 color: rgb(64, 79, 219);
 }
 .flash {
 margin-top: 0;
+}
+.pop{
+z-index: 10000
 }
 </style>
 

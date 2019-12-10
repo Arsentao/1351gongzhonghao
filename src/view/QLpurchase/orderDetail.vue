@@ -73,11 +73,11 @@
         <!-- 总额 -->
         <div class="total-orders clearfix">
           <span class="order-detail-price-p1"><span class="price-show">订单总额</span></span>
-          <span class="order-detail-price-p3"><i class="sub">￥</i>{{ total }}</span>
+          <span class="order-detail-price-p3"><i class="sub">￥&nbsp;</i>{{ total }}</span>
         </div>
         <!-- 运费 -->
         <div class="freight clearfix">
-          <span class="order-detail-price-p4"><span class="price-show">运费</span></span>
+          <span class="order-detail-price-p4"><span class="price-show">快递费</span></span>
           <span class="order-detail-price-p6"><i class="sub">￥</i>{{ transfee }}</span>
         </div>
       </div>

@@ -70,12 +70,14 @@
         <span><i class="sub">￥</i>{{total}}</span>
       </p>
       <p class="amount-lst clearfix">
-        <span class="price-show">运费</span>
-        <span><i class="sub">￥</i>{{transfee}}</span>
+        <span class="price-show">快递费</span>
+        <span v-show="totalCount == 1"><i class="sub">￥</i>18</span>
+        <span v-show="totalCount != 1"><i class="sub">￥</i>0</span>
       </p>
     </div>
     <!-- 小计 -->
-    <div class="subtotal"><span class="price-show">小计</span>&nbsp;<i class="sub">￥</i>{{actualTotal}}</div>
+    <div class="subtotal"><span class="price-show" style="font-size:15px">小计</span><i class="sub">&nbsp;&nbsp;￥</i>{{actualTotal}}</div>
+ 
 
     <!-- 脚部 -->
     <div class="order-foot-box">
@@ -94,7 +96,6 @@ export default {
   components: { topHead },
   data () {
     return {
-      title: '琴侣 —— 提交订单',
       orderList: [],
       orderEntry: sessionStorage.getItem('orderEntry'),
       userAddr: null,
@@ -122,18 +123,21 @@ export default {
     }).then(({ data }) => {
       this.$toast.clear()
       this.orderList = data.shopCartOrders[0].shopCartItemDiscounts[0].shopCartItems
-      this.transfee = data.shopCartOrders[0].transfee
       this.total = data.shopCartOrders[0].total
       this.totalCount = data.totalCount
       this.actualTotal = data.actualTotal
       this.userAddr = data.userAddr
+      this.hahaha()
     })
+
   },
 
+
+
   methods: {
-    /**
-     * 提交订单
-     */
+   hahaha: function(){
+     console.log(this.totalCount)
+   },
     toPay: function () {
       if (!this.userAddr) {
         this.$toast('请选择地址')
@@ -339,6 +343,11 @@ i.sub {
   right: 80px;
   position: absolute;
 }
+.amount-lst span:nth-child(2) {
+  float: right;
+  color: rgb(185, 0, 0);
+  font-size: 18px
+}
 .amount-lst span:last-child {
   float: right;
   color: rgb(185, 0, 0);
@@ -357,7 +366,7 @@ i.sub {
   box-sizing: border-box;
   padding: 0.5em 1em;
   text-align: right;
-  font-size: 14px;
+  font-size: 17px;
   color: rgb(185, 0, 0);
 }
 /* 脚部 */

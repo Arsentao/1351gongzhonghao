@@ -9,7 +9,7 @@
             <p style="font-weight:bold">首页</p>
           </a>
         </li>
-        <li>
+        <!-- <li>
           <a href="/car">
             <img src="../assets/images/icon/detCar.png"
                  alt="">
@@ -17,17 +17,17 @@
             <span class="cart-total-count"
                   v-if="totalCartNum>0">{{totalCartNum}}</span>
           </a>
-        </li>
+        </li> -->
       </ul>
       <ul class="detfoot-right clearfix">
         <li>
           <a href="javascript:void(0)"
              @click="buyNow">立即购买</a>
         </li>
-        <li>
+        <!-- <li>
           <a href="javascript:void(0)"
              @click="addToCart">加入购物车</a>
-        </li>
+        </li> -->
       </ul>
     </footer>
   </div>
@@ -73,12 +73,12 @@ footer {
 /* 左边 */
 .detfoot-left {
   float: left;
-  width: 40%;
+  width: 50%;
   height: 100%;
 }
 .detfoot-left > li {
   display: inline-block;
-  width: 48%;
+  width: 100%;
   height: 100%;
   position: relative;
 }
@@ -97,19 +97,19 @@ footer {
 /* 右边 */
 .detfoot-right {
   float: right;
-  width: 60%;
+  width: 50%;
   height: 100%;
 }
 .detfoot-right > li {
   float: right;
-  width: 50%;
+  width: 100%;
   height: 100%;
 }
 .detfoot-right > li:first-child {
   background-color: #ca210a;
 }
 .detfoot-right > li:last-child {
-  background-color: #389638;
+  background-color: #d82932;
 }
 .detfoot-right > li > a {
   display: block;

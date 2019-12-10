@@ -44,8 +44,8 @@
           </div>
 
 
-          <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class = "price-show">总价</span> ￥{{totalprice}}</div>
+          <!-- <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class = "price-show">总价</span> ￥{{totalprice}}</div> -->
 
  
 <!-- 
