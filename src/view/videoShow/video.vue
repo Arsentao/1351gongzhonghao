@@ -20,7 +20,6 @@
              v-for="(item,index) of videoList"
              @click="changeVideo(index)"
              :key="index">
-          <!-- <div :class="{'current-red':index == isactive}" :id="'vcenter' + index"><span class="title">&nbsp;&nbsp;{{ item.videoTitle }}&nbsp;&nbsp;</span></div> -->
         <img :src="poster[index]" width="100px"  :class="{'current-red':index == isactive}">
         </div>
       </div>
@@ -203,17 +202,14 @@ export default {
   text-align: left;
   flex-wrap: nowrap;
   flex-direction: row;
-  /* 强制不换行 */
-  white-space: nowrap;
   padding-left: 0.3em;
-  /* 横向滑动 */
   overflow-x: scroll;
 }
 .slide-item {
   display: inline-block;
   width: 23.6vw;
   margin-right: 25px;
-  margin-bottom: 1.5em;
+  /* margin-bottom: 1.5em; */
 }
 .slide-item > img {
   width: 100%;
@@ -382,8 +378,8 @@ text-align: center;
 
 .garden{
 text-align: left;
-padding-left:0.3em;
-margin-top:2em;
+padding-left: 0.3em;
+margin-top: 0.8em;
 }
 
 

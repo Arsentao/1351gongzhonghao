@@ -124,10 +124,8 @@
 
       <div class="form">
     <p class="rule-tip"><span style="background-color:#4d79ff;color:white;padding:3px;">温馨提示:</span></p>
-    <p class="rule-txt">由于格式不同，定制的鸟然谱</p>
-    <p class="rule-txt">与上传的乐谱可能存在差异</p>
-    <p class="rule-txt">图片：jpg jpeg png gif</p>
-    <p class="rule-txt">视频：mov mp4</p>
+    <p class="rule-txt">支持图片格式：jpg jpeg png gif</p>
+    <p class="rule-txt">支持视频格式：mov mp4</p>
       </div>
 
 

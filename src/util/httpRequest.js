@@ -88,7 +88,7 @@ http.interceptors.response.use(response => {
  */
 http.adornUrl = (actionName) => {
   return (process.env.NODE_ENV === 'production' ? process.env.HOST : '') + '/apis' + actionName
-  //return "http://www.heat1315.cn:8089"+actionName
+  // return "http://www.13511351.com:8089"+actionName
 }
 
 /**

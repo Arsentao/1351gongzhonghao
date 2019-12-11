@@ -5,14 +5,11 @@
 
   <van-dialog
       v-model="popshow" show-confirm-button
-      confirm-button-text="继续">
+      confirm-button-text="继   续">
           <div class="wenxin-div">
-        <span class="wenxin-span">温馨提示</span>
-        <p class="wenxin-p">本曲库仅提供版权已公开的曲目</p>
-        <p class="wenxin-p">如有遗漏</p>
-        <p class="wenxin-p">请拥有本栏目</p>
-        <p class="wenxin-p">任何作品版权的个人或组织</p>
-        <p class="wenxin-p">联系本站支付版权费用</p>
+        <span class="wenxin-span">告示</span>
+        <p class="wenxin-p">本曲库仅提供正版曲目</p>
+        <p class="wenxin-p">欢迎拥有版权的人士联系本站提供版权</p>
       </div>
     </van-dialog>
 
@@ -786,7 +783,7 @@ animation: fade 600ms infinite;
 .play{
   position: absolute;
   z-index: 100;
-  left: 16em;
+  left: 14em;
   top: 2.3em;
 
 }
@@ -839,4 +836,13 @@ border: 2px dashed rgb(80, 121, 209);
 
 
 }
+</style>
+<style>
+/* .van-dialog__confirm .van-button__text{
+padding-left: 30px;
+padding-right: 30px;
+}
+.van-dialog{
+width: 95%;
+} */
 </style>

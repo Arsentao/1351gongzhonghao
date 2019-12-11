@@ -3,12 +3,6 @@ font-size: 22px;
 font-weight: bold;
 }
 
-/* .van-dialog__content .van-dialog__message{
-font-size: 18px;
-color: #404fdb;
-line-height: 200%;
-} */
-
 .price-show{
 padding: 4px;
 color: white;
@@ -31,11 +25,10 @@ line-height: 200%;
 }
 
 .wenxin-div{
-margin-top: 10%;
-margin-bottom: 10%;
-border: 2px dashed rgb(18, 132, 207);
-width: 80%;
-margin-left: 10%;
+margin-top: 5%;
+margin-bottom: 5%;
+/* border: 2px dashed rgb(18, 132, 207); */
+width: 100%;
 }
 
 .van-dialog__confirm .van-button__text{
@@ -59,4 +52,18 @@ color: white;
 background-color: #6e41e2d7;
 font-weight: bold;
 border-radius: 15%;
+}
+
+.van-dialog__cancel .van-button__text{
+padding-left: 30px;
+padding-right: 30px;
+}
+.van-dialog{
+width: 95%;
+top: 65%;
+}
+
+.van-dialog__confirm .van-button__text{
+padding-left: 30px;
+padding-right: 30px;
 }

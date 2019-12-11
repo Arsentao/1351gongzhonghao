@@ -4,26 +4,32 @@
 
   <van-dialog
       v-model="popshow" show-confirm-button show-cancel-button
-      confirm-button-text="接受"
-      cancel-button-text="不接受"
+      confirm-button-text="接 受"
+      cancel-button-text="不 接 受"
       @cancel="disagree" class="pop">
       <div class="wenxin-div">
-        <span class="wenxin-span">温馨提示</span>
-        <p class="wenxin-p">本定制作品仅用于个人学习音乐</p>
-        <p class="wenxin-p">未经著作权许可</p>
-        <p class="wenxin-p">不得用于任何有偿活动</p>
+        <span class="wenxin-span">告示</span>
+        <p class="wenxin-p">定制作品仅用于个人学习</p>
+        <p class="wenxin-p">未经著作权人许可，不得用于任何有偿活动</p>
+        <p class="wenxin-p">定制的鸟然谱与上传的曲目可能存在差异</p>
       </div>
     </van-dialog>
 
 
 
-  <div class="flash">
+  <!-- <div class="flash">
     <video autoplay loop poster x5-playsinline="true" preload="auto" 
     x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true"
     id="cartoon" 
     src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/haha.mp4"
     height="250px" width="80%"/>
-  </div>
+  </div> -->
+
+
+<div class="flash">
+  <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BB12-11.gif"
+  height="200px" width="80%">
+</div>
 
    <div class="btn-assess">
       <button class="conserve-btn" @click="assess()">
@@ -203,7 +209,7 @@ line-height: 200%;
 color: rgb(64, 79, 219);
 }
 .flash {
-margin-top: 0;
+margin-top: 50px;
 }
 .pop{
 z-index: 10000
@@ -214,4 +220,15 @@ z-index: 10000
 .van-toast .van-toast__text{
 font-size: 18px;
 }
+/* .van-dialog__confirm .van-button__text{
+padding-left: 30px;
+padding-right: 30px;
+}
+.van-dialog__cancel .van-button__text{
+padding-left: 30px;
+padding-right: 30px;
+}
+.van-dialog{
+width: 95%;
+} */
 </style>
