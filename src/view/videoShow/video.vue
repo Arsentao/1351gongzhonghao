@@ -30,11 +30,12 @@
 
        <div class="garden">
       <router-link to="garden">
-      <img src="https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/5.png" width="100px" height="75px">
+      <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/5.png" width="100px" height="75px">
       </router-link>
     </div>
 
 
+<!-- <div id="vcenterx"><span class="title">游戏式学琴</span></div> -->
 
    <v-footer></v-footer>
   </div>
@@ -63,10 +64,10 @@ export default {
         }
       ],
       poster: [
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png",
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png",
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png",
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png"
+      "https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png",
+      "https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png",
+      "https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png",
+      "https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png"
       ]
     }
   },
@@ -199,10 +200,9 @@ export default {
 }
 .swiper-wrapper {
   width: 100%;
-  text-align: left;
+  text-align: center;
   flex-wrap: nowrap;
   flex-direction: row;
-  padding-left: 0.3em;
   overflow-x: scroll;
 }
 .slide-item {
@@ -347,7 +347,7 @@ text-align: center;
 #vcenter1{
 width: 100px;
 height: 50px;
-background: url("https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png");
+background: url("https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png");
 background-size: 100% 100%;
 padding-top: 25px;
 font-weight: bold;
@@ -377,9 +377,9 @@ text-align: center;
 
 
 .garden{
-text-align: left;
-padding-left: 0.3em;
-margin-top: 0.8em;
+text-align: center;
+margin-top: 1em;
+margin-right: 25px;
 }
 
 
@@ -387,5 +387,18 @@ margin-top: 0.8em;
 background-color: #fff;
 color: rgb(43, 31, 218);
 font-size: 16px;
+padding: 0 10px;
+}
+
+#vcenterx{
+width: 100px;
+height: 50px;
+background: url("https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png");
+background-size: 100% 100%;
+font-weight: bold;
+text-align: center;
+background-repeat: no-repeat;
+padding-top: 25px;
+margin-left: 0.3em;
 }
 </style>

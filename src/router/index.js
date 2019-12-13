@@ -117,7 +117,7 @@ const router = new Router({
       path: '/index',
       component: index,
       meta: {
-        title: '新概念学琴'
+        title: '新概念学琴平台'
       }
     },
     // 曲谱购买-曲谱详情
@@ -135,7 +135,7 @@ const router = new Router({
       name: 'goodsList',
       component: goodsList,
       meta: {
-        title: '琴侣小店'
+        title: '琴侣旗舰'
       }
     },
     // 琴侣-详情

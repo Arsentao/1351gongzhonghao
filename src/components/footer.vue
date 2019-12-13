@@ -79,16 +79,16 @@ export default {
           path: '/index',
           icon: indexPic
         }, {
-          name: '曲谱订购',
+          name: '鸟然谱库',
           path: '/songSearch',
           icon: songSearchPic
         }, {
-          name: '琴侣配器',
+          name: '琴侣旗舰',
           path: '/goodsList',
           icon: goodsListPic
         }, {
-          name: '曲谱译制',
-          path: '/explain',
+          name: '用户定制',
+          path: '/explain1',
           icon: explainPic
         }, {
           name: '服务中心',
@@ -99,7 +99,7 @@ export default {
           path: '/personal',
           icon: personalPic
         }, {
-          name: '视频展示',
+          name: '琴侣微漫',
           path: '/video',
           icon: videoPic
         },

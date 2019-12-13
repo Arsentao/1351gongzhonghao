@@ -1,7 +1,7 @@
 <template>
      <div class="QA">
         <div class="hidden" :style="{'height':height}">
-           <div class="inner-container" :style="{'animation-duration':duration}">
+           <!-- <div class="inner-container" :style="{'animation-duration':duration}"> -->
        <div class="gundong" v-for="(item,index) in postList" :key="index">
         <div class="Q">
               <div class="img"><img class="img-ask" src="../../assets/images/forum/ask.jpg"></div>
@@ -12,7 +12,7 @@
               <span class="span-answer">{{item.answer}}</span>  
         </div>
        </div>
-        </div>
+        <!-- </div> -->
         </div>
         <div class="ask-box">
               <input class="text" type="text" v-model="myask" placeholder="请在此输入您的问题">

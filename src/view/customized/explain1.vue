@@ -27,7 +27,7 @@
 
 
 <div class="flash">
-  <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BB12-11.gif"
+  <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BBnew.gif"
   height="200px" width="80%">
 </div>
 
