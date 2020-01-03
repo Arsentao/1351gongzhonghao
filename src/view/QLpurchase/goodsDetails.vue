@@ -8,7 +8,7 @@
         <van-swipe  class="van-swiper" indicator-color="red" :autoplay="10000">
           <van-swipe-item v-for="(image, index) in imgMap"
                           :key="index">
-            <img v-lazy="image" width="300px" height="300px">
+            <img v-lazy="image" width="200px" height="200px">
           </van-swipe-item>
         </van-swipe>
       </div>
@@ -44,11 +44,24 @@
           </div>
 
 
-          <!-- <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
-            <span class = "price-show">总价</span> ￥{{totalprice}}</div> -->
+           <div class="leave-msg">
+      买家留言：<input type="text"
+             v-model="remarks" @blur="msg()">
+    </div>
+     
+     <div class="leave-msg">
+      推荐人1电话：<input type="text" 
+             v-model="phone1" @blur="msg()">
+    </div>
+   
+     <div class="leave-msg">
+      推荐人2电话：<input type="text"
+             v-model="phone2" @blur="msg()">
+    </div>
 
- 
-<!-- 
+
+    <!-- <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class = "price-show">总价</span> ￥{{totalprice}}</div> 
     <div class="details-con"
          v-html="content"></div>
  -->
@@ -73,6 +86,9 @@ export default {
   },
   data () {
     return {
+      remarks: '',
+      phone1: '',
+      phone2: '',
       prodId: this.$route.params.prodId,
       imgMap: [],
       shopId: 1,
@@ -144,8 +160,16 @@ export default {
     // 获取购物车数量
     this.getCartTotalCount()
   },
-  mounted () { },
+
   methods: {
+
+      msg(){
+    console.log('触发')
+    document.body.scrollTop = 0
+   
+  },
+
+
     // 根据sku的属性 分组
     groupSkuProp: function () {
       var skuList = this.skuList
@@ -319,7 +343,9 @@ export default {
       }))
       // 跳转到填写订单页面
       sessionStorage.setItem('orderEntry', 1)
-      this.$toast(sessionStorage.getItem('orderItem'))
+      sessionStorage.setItem('remarks', this.remarks)
+      sessionStorage.setItem('phone1', this.phone1)
+      sessionStorage.setItem('phone2', this.phone2)
       this.$router.push('/order')
     },
 
@@ -654,5 +680,17 @@ margin-right: 10%;
 padding: 2px;
 color: white;
 background-color: #d93949;
+}
+
+.leave-msg {
+font-size: 15px;
+padding: 0.5em 1em;
+border-bottom: 1px solid #f3f3f3;
+text-align: left;
+line-height: 30px;
+}
+.leave-msg > input {
+border: none;
+outline: none;
 }
 </style>

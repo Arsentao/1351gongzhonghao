@@ -64,7 +64,7 @@ export default {
           img: require('../assets/images/homePage/btn_video.png')
         },{
           path: '/personal',
-          img: require('../assets/images/homePage/btn_personal1.png')
+          img: require('../assets/images/homePage/btn_personal.png')
         },
         {
           path: '/songSearch',
@@ -144,7 +144,7 @@ ul.menu > li {
   position: relative;
 }
 img.menu-btn {
-  width: 100%;
+  width: 90%;
 }
 
 /** 水波纹 */
@@ -164,7 +164,7 @@ img.menu-btn {
   background-color: #f7fdfd;
 }
 .wavebg-1 {
-  background: url("../assets/images/homePage/btn_personal1.png");
+  background: url("../assets/images/homePage/btn_personal.png");
   background-position: center center;
   background-size: 40vw 40vw;
   background-repeat: no-repeat;

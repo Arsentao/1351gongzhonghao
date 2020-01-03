@@ -116,6 +116,16 @@
 
       </div>
 
+      
+       <div class="leave-msg">
+      推荐人1电话：<input type="text" 
+             v-model="phone1" @blur="msg()">
+    </div>
+   
+     <div class="leave-msg">
+      推荐人2电话：<input type="text"
+             v-model="phone2" @blur="msg()">
+    </div>
 
       <div class="conserve-btn" @click="queryFilesSubmit()">提交</div>
       
@@ -141,6 +151,8 @@ Vue.use(Uploader)
 export default {
   data () {
     return {
+      phone1: '',
+      phone2: '',
       fileListA: [],
       fileListB: [],
       fileListC: [],
@@ -244,7 +256,9 @@ export default {
     },
 
 
-
+    msg(){
+       document.body.scrollTop = 0
+    },
 
     afterReadA (file) {
       this.$toast.loading({
@@ -392,7 +406,9 @@ export default {
         method: 'POST',
         data: {
           fileList: filePaths,
-          customizedNo: this.customizedNo
+          customizedNo: this.customizedNo,
+          phone1: this.phone1,
+          phone2: this.phone2
         }
       }).then(({ data }) => {
         if(this.fee == 0){
@@ -468,7 +484,7 @@ export default {
   width: 13rem;
   height: 2em;
   margin: 0 auto;
-  margin-top: 4em;
+  margin-top: 2em;
   line-height: 2em;
   color: white;
   letter-spacing: 0.5em;
@@ -553,7 +569,7 @@ vertical-align: middle
 
 .form {
 text-align: center;
-margin-top: 5rem;
+margin-top: 3rem;
 width: 80%;
 margin-left: 10%;
 border: 2px dashed rgb(80, 121, 209);
@@ -569,6 +585,18 @@ animation: fade 600ms infinite;
 .square {
 width: 70px;
 height: 70px;
+}
+
+.leave-msg {
+font-size: 15px;
+padding: 0.5em 1em;
+border-bottom: 1px solid #f3f3f3;
+text-align: left;
+line-height: 30px;
+}
+.leave-msg > input {
+border: none;
+outline: none;
 }
 
 </style>

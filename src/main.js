@@ -6,7 +6,7 @@ import router from './router'
 import httpRequest from './util/httpRequest'
 import Vuex from 'vuex'
 import store from './store/store'
-import { Toast, Dialog, Popup, Button, Checkbox, CheckboxGroup, Notify, Icon, RadioGroup, Radio, Cell, CellGroup, Lazyload} from 'vant'
+import { Toast, Dialog, Popup, Button, Checkbox, CheckboxGroup, Notify, Icon, RadioGroup, Radio, Cell, CellGroup, Lazyload, Field, DropdownMenu, DropdownItem, DatetimePicker, Calendar} from 'vant'
 import 'vant/lib/index.css'
 import VueWechatTitle from 'vue-wechat-title'
 import './style.css'
@@ -14,7 +14,8 @@ import scroll from 'vue-seamless-scroll'
 Vue.use(scroll)
 Vue.use(Vuex)
 Vue.use(VueWechatTitle).use(Toast).use(Dialog).use(Popup).use(Cell).use(CellGroup).use(Lazyload)
-.use(Button).use(Checkbox).use(CheckboxGroup).use(Notify).use(Icon).use(Radio).use(RadioGroup)
+.use(Button).use(Checkbox).use(CheckboxGroup).use(Notify).use(Icon).use(Radio).use(RadioGroup).use(Field).use(DropdownMenu).use(DropdownItem).use(DatetimePicker).use(Calendar)
+Toast.setDefaultOptions({ duration: 4000 });
 
 // import layout from './components/layout'
 

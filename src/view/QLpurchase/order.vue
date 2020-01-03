@@ -1,6 +1,5 @@
 <template>
-  <div class="sub-order"
-       v-wechat-title="this.title">
+  <div class="sub-order">
 
     <!-- 地址为空 -->
     <a href="/address?type=order"
@@ -58,11 +57,7 @@
     <p class="count-txt">共&nbsp;<span style="color:red">{{totalCount}}</span>&nbsp;件商品&nbsp;&nbsp;&nbsp;<span class="price-show">合计</span>&nbsp;<span class="red-price"><i class="sub">￥</i>{{total}}</span>
     </p>
     <!-- 给卖家留言 -->
-    <div class="leave-msg">
-      买家留言：<input type="text"
-             placeholder="给卖家留言"
-             v-model="remarks">
-    </div>
+   
     <!-- 订单总额 -->
     <div class="order-amount-details clearfix">
       <p class="amount-lst clearfix">
@@ -76,7 +71,7 @@
       </p>
     </div>
     <!-- 小计 -->
-    <div class="subtotal"><span class="price-show" style="font-size:15px">小计</span><i class="sub">&nbsp;&nbsp;￥</i>{{actualTotal}}</div>
+    <div class="subtotal"><span class="price-show" style="font-size:15px">小计</span><i class="sub">&nbsp;&nbsp;&nbsp;&nbsp;￥</i>{{actualTotal}}</div>
  
 
     <!-- 脚部 -->
@@ -104,7 +99,9 @@ export default {
       transfee: 0,
       total: 0,
       addrId: this.$route.query.addrId || 0,
-      remarks: ''
+      remarks: sessionStorage.getItem('remarks'),
+      phone1: sessionStorage.getItem('phone1'),
+      phone2: sessionStorage.getItem('phone2'),
     }
   },
   created () {
@@ -127,7 +124,6 @@ export default {
       this.totalCount = data.totalCount
       this.actualTotal = data.actualTotal
       this.userAddr = data.userAddr
-      this.hahaha()
     })
 
   },
@@ -135,16 +131,32 @@ export default {
 
 
   methods: {
-   hahaha: function(){
-     console.log(this.totalCount)
-   },
     toPay: function () {
       if (!this.userAddr) {
         this.$toast('请选择地址')
         return
       }
-
+   
+         else if (this.phone1.length != 11 && this.phone1.length != 0) {
+        this.$toast('请输入正确的电话号码')
+        return
+      }
+    
+         else if (this.phone2.length != 11 && this.phone2.length != 0) {
+        this.$toast('请输入正确的电话号码')
+        return
+      }
+        else if (this.phone1 == this.phone2 && this.phone1.length != 0 ) {
+        this.$toast('两个推荐人电话不能一致')
+        return
+      }
+        else if (this.phone1 == this.userAddr.mobile || this.phone2 == this.userAddr.mobile) {
+        this.$toast('推荐人电话不能与收货地址所填的号码一致')
+        return
+      }
+     else{
       this.submitOrder()
+     }
     },
 
     submitOrder: function () {
@@ -157,7 +169,9 @@ export default {
         data: this.$http.adornData({
           orderShopParam: [{
             remarks: this.remarks,
-            shopId: 1
+            shopId: 1,
+            phone1: this.phone1,
+            phone2: this.phone2,
           }]
         })
       }).then(({ data }) => {
@@ -310,19 +324,7 @@ i.sub {
 .red-price {
   color: #b90000;
 }
-.leave-msg {
-  font-size: 15px;
-  padding: 0.5em 1em;
-  border-bottom: 1px solid #f3f3f3;
-  text-align: left;
-  height: 30px;
-  line-height: 30px;
-}
-.leave-msg > input {
-  width: 68vw;
-  border: none;
-  outline: none;
-}
+
 /* 总额 */
 .order-amount-details {
   box-sizing: border-box;
@@ -400,4 +402,7 @@ i.sub {
   width: 30vw;
   text-align: center;
 }
+/* input::-webkit-input-placeholder{
+color: hsla(86, 84%, 49%, 0.842);
+} */
 </style>

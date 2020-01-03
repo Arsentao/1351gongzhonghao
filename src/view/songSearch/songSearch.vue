@@ -8,8 +8,8 @@
       confirm-button-text="继   续">
           <div class="wenxin-div">
         <span class="wenxin-span">告示</span>
-        <p class="wenxin-p">本曲库仅提供正版曲目</p>
-        <p class="wenxin-p">欢迎拥有版权的人士联系本站提供版权</p>
+        <p class="wenxin-p">□ 本曲库仅提供正版曲目。</p>
+        <p class="wenxin-p">□ 欢迎拥有版权的人士联系本站提供版权。</p>
       </div>
     </van-dialog>
 

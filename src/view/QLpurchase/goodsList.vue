@@ -49,9 +49,9 @@
       </router-link>
     </ul>
     <div class="info">
-      <p class="detail">两件以上包邮</p>
-      <p class="detail">十件95折</p>
-      <p class="detail">二十件92折</p>
+      <p class="detail">□ 两台以上包邮</p>
+      <p class="detail">□ 十件以上赠送蓝牙音箱</p>
+      <p class="detail">□ 二十台以上赠送一台琴侣</p>
     </div>
     <div class="prompt"
          v-if="totalPage>1">
@@ -296,10 +296,13 @@ export default {
 margin-top: 10%;
 font-size: 18px;
 color: rgb(29, 82, 179);
-width: 60%;
+width: 80%;
 border: 2px dashed rgb(29, 82, 179);
-text-align: center;
+text-align: left;
 line-height: 200%;
-margin-left: 20%;
+margin-left: 10%;
+}
+p.detail{
+padding-left: 12px;
 }
 </style>

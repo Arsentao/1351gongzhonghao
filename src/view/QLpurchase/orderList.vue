@@ -206,7 +206,7 @@ export default {
           duration: 0
         })
         this.$http({
-          url: this.$http.adornUrl('/p/myOrder/receipt/'),
+          url: this.$http.adornUrl('/p/myOrder/receipt/' + orderNumber),
           method: 'PUT'
         }).then(({ data }) => {
           this.loadPageData(1)

@@ -20,6 +20,9 @@ import addAddr from '@/view/QLpurchase/addAddress'
 import personal from '@/view/personal/personal'
 import wallet from '@/view/personal/wallet'
 import friends from '@/view/personal/friends'
+import myOrders from '@/view/personal/myOrders'
+import beStar from '@/view/personal/beStar'
+import question from '@/view/personal/question'
 // 交流中心
 import forum from '@/view/forum/forumCenter'
 import postList from '@/view/forum/postList'
@@ -69,14 +72,6 @@ const router = new Router({
       }
     },
     {
-      path: '/QA',
-      name: 'QA',
-      component: QA,
-      meta: {
-        title: '服务中心'
-      }
-    },
-    {
       path: '/gundong',
       name: 'gundong',
       component: gundong
@@ -86,7 +81,7 @@ const router = new Router({
       name: 'QA',
       component: QA,
       meta: {
-        title: '服务中心'
+        title: '问询服务'
       }
     },
     {
@@ -117,7 +112,7 @@ const router = new Router({
       path: '/index',
       component: index,
       meta: {
-        title: '新概念学琴平台'
+        title: '新概念琴唱平台'
       }
     },
     // 曲谱购买-曲谱详情
@@ -376,7 +371,31 @@ const router = new Router({
       name: 'personal',
       component: personal,
       meta: {
-        title: '个人中心'
+        title: '个人网红'
+      }
+    },
+    {
+      path: '/myOrders',
+      name: 'myOrders',
+      component: myOrders,
+      meta: {
+        title: '订单详情'
+      }
+    },
+    {
+      path: '/beStar',
+      name: 'beStar',
+      component: beStar,
+      meta: {
+        title: '网红认证'
+      }
+    },
+    {
+      path: '/question',
+      name: 'question',
+      component: question,
+      meta: {
+        title: '历史提问'
       }
     }
   ]

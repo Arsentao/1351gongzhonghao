@@ -11,13 +11,13 @@
         <li :class="{'curr':navIndex==2}">
           <router-link to="/personal">
             <i class="foot-nav-icon foot-nav-personal"></i>
-            <span class="foot-nav-text">个人中心</span>
+            <span class="foot-nav-text">个人网红</span>
           </router-link>
         </li>
         <li :class="{'curr':navIndex==3}">
           <router-link to="/QA">
             <i class="foot-nav-icon foot-nav-forum"></i>
-            <span class="foot-nav-text">服务中心</span>
+            <span class="foot-nav-text">问询服务</span>
           </router-link>
         </li>
         <li :class="{'curr':navIndex==4}"
@@ -91,11 +91,11 @@ export default {
           path: '/explain1',
           icon: explainPic
         }, {
-          name: '服务中心',
+          name: '问询服务',
           path: '/QA',
           icon: forumPic
         }, {
-          name: '个人中心',
+          name: '个人网红',
           path: '/personal',
           icon: personalPic
         }, {

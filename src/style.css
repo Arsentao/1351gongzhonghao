@@ -1,5 +1,5 @@
 .van-dialog .van-dialog__header{
-font-size: 22px;
+font-size: 20px;
 font-weight: bold;
 }
 
@@ -9,6 +9,14 @@ color: white;
 background-color: #d93949;
 }
 
+.van-cell{
+font-size: 22px;
+line-height: 30px;
+}
+
+.van-cell__title{
+text-align: left;
+}
 
 .wenxin-span{
 font-size: 20px;
@@ -22,6 +30,7 @@ line-height: 200%;
 font-size: 16px;
 color: rgb(18, 132, 207);
 line-height: 200%;
+text-align: left;
 }
 
 .wenxin-div{

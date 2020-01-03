@@ -28,12 +28,23 @@
 </van-radio-group>
   </div>
 
+
+ <div class="recommand">
+        <div class="leave-msg">
+      推荐人1电话：<input type="text" 
+             v-model="phone1" @blur="msg()">
+    </div>
+   
+     <div class="leave-msg">
+      推荐人2电话：<input type="text"
+             v-model="phone2" @blur="msg()">
+    </div>
+ </div>
   <div class="submit">
       <van-button type="danger" @click="buy" class="buy">购买</van-button>
   </div>
   
-  <div id="error">
-  </div>
+  
 
 
 
@@ -49,15 +60,34 @@ title: '曲谱类型选择',
         return{
         radio: "0",
         musicid: sessionStorage.getItem('musicid'),
-        pricetotal: [sessionStorage.getItem('price'),sessionStorage.getItem('price1')]
-       
+        pricetotal: [sessionStorage.getItem('price'),sessionStorage.getItem('price1')],
+        phone1: "",
+        phone2: ""
         }
     },
 
 
 
 methods: {
+  msg(){
+    document.body.scrollTop = 0
+    console.log('触发')
+  },
      buy () {
+         if (this.phone1.length != 11 && this.phone1.length != 0) {
+        this.$toast('请输入正确的电话号码')
+        return
+      }
+    
+         else if (this.phone2.length != 11 && this.phone2.length != 0) {
+        this.$toast('请输入正确的电话号码')
+        return
+      }
+        else if (this.phone1 == this.phone2 && this.phone1.length != 0) {
+        this.$toast('两个推荐人电话不能一致')
+        return
+      }
+      else{
       this.$toast.loading({
         forbidClick: true,
         duration: 0
@@ -65,13 +95,18 @@ methods: {
       this.$http({
         url: this.$http.adornUrl('/p/music/order/buy?type=' + this.radio),
         method: 'POST',
-        data: this.musicid
+         data: this.$http.adornData({
+            musicId: this.musicid,
+            phone1: this.phone1,
+            phone2: this.phone2, 
+        })
       }).then(({ data }) => {
         this.$toast.clear()
         sessionStorage.setItem('orderNo', data.orderNo)
         sessionStorage.setItem('songTotal', this.pricetotal[this.radio])
         this.$router.push('/songPay')
       })
+      }
     },
 
 }
@@ -122,5 +157,18 @@ height: 1.5em;
 line-height: 1.5em;
 vertical-align: middle;
 }
+
+.leave-msg {
+font-size: 15px;
+padding: 0.5em 1em;
+border-bottom: 1px solid #f3f3f3;
+text-align: left;
+line-height: 30px;
+}
+.leave-msg > input {
+border: none;
+outline: none;
+}
+
 </style>
 

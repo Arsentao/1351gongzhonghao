@@ -14,7 +14,7 @@
           <input type="text"
                  placeholder="请输入琴侣id"
                  class="paySuccess-head-input"
-                 v-model="padId">
+                 v-model="padId" @blur="focus()">
           <!-- <img src="../../assets/images/icon/paysele.png"
                alt=""
                class="paySuccess-head-icon1"> -->
@@ -65,9 +65,10 @@ export default {
   },
 
   methods: {
-    /**
-     * 调用微信扫码
-     */
+    focus(){
+      document.body.scrollTop = 0;
+    },
+ 
     scanCode () {
       this.$toast.loading({
         forbidClick: true,
@@ -97,7 +98,6 @@ export default {
     confirmOrder () {
       if (this.padId.trim() == '') {
         this.$toast('请输入琴侣id')
-        return
       }
       this.$toast.loading({
         mask: true
@@ -111,20 +111,29 @@ export default {
         })
       }).then(({ data }) => {
         this.$toast.clear()
-        localStorage.setItem("lastPadId",this.padId);
-        this.$router.replace('/index')
-        this.$router.push('/songOrders')
+        localStorage.setItem("lastPadId",this.padId)
+          this.$dialog.alert({
+          title:"购买成功！",
+        }).then(() => {
+         this.$router.replace('/index')
+         this.$router.push('/songOrders')
+        });
       })
     }
   }
 }
 </script>
 <style scoped>
-.paySuccess-head {
-  background-color: white;
-  padding: 15vw 0;
+.paySuccess-mian{
+height: 100%;
+width: 100%;
+position: fixed;
+overflow: auto;
+background: white;
 }
-/* 图片 */
+.paySuccess-head {
+padding: 15vw 0;
+}
 .img-box {
   display: block;
   width: 25vw;
@@ -191,5 +200,8 @@ export default {
   border-radius: 30px;
   border: none;
   font-size: 15px;
+}
+input::-webkit-input-placeholder{
+color: rgba(95, 87, 87, 0.808);
 }
 </style>

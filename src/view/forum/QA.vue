@@ -1,6 +1,10 @@
 <template>
      <div class="QA">
-        <div class="hidden" :style="{'height':height}">
+         <div class="ask-box">
+              <input class="text" type="text" v-model="myask" placeholder="请在此输入您的问题">
+              <button class="send" @click="send()">发送</button>
+        </div>
+        <div class="hidden">
            <!-- <div class="inner-container" :style="{'animation-duration':duration}"> -->
        <div class="gundong" v-for="(item,index) in postList" :key="index">
         <div class="Q">
@@ -14,11 +18,7 @@
        </div>
         <!-- </div> -->
         </div>
-        <div class="ask-box">
-              <input class="text" type="text" v-model="myask" placeholder="请在此输入您的问题">
-              <button class="send" @click="send()">发送
-              </button>
-        </div>
+      
     <foot-nav :navIndex="3"></foot-nav>
     </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   },
   data () {
     return {
-      height : document.documentElement.clientHeight * 0.7 + 'px',
+      height : '500px',
       listlength: 0,
       myask: '',
       postList: [],
@@ -117,10 +117,15 @@ transform: translateY(-1900px);
 }
 }
 
-
-.hidden{
-margin-top: 20%;
+.QA{
 width: 100%;
+height: 100%;
+position: fixed;
+}
+.hidden{
+margin-top: 16%;
+width: 100%;
+height: 80%;
 overflow: hidden;
 overflow-y: scroll;
 background: url("../../assets/images/homePage/logo2.jpg");
@@ -153,34 +158,37 @@ color: red;
 display: inline-block;
 padding: 10px;
 text-align: left;
-font-size: 20px;
+font-size: 16px;
 background-color: white;
 border-radius: 10%;
-max-width: 70%;
+max-width: 75%;
 border: 2px solid red;
 box-shadow: 0 0 3px rgb(231, 223, 223);
-word-break:break-all;
+word-break: break-all;
 }
 .span-answer{
 color: blue;
 display: inline-block;
 padding: 10px;
 text-align: left;
-font-size: 20px;
+font-size: 16px;
 background-color: white;
 border-radius: 10%;
-max-width: 70%;
+max-width: 75%;
 border: 2px solid blue;
 box-shadow: 0 0 3px rgb(231, 223, 223);
-word-break:break-all;
+word-break: break-all;
 }
 .ask-box{
 position: absolute;
 top: 0%;
 width: 100%;
 text-align: left;
+height: 8%;
+vertical-align: middle;
 }
 .text{
+margin-top: 10px;
 width: 70%;
 height: 40px;
 margin-left: 5%;
@@ -193,6 +201,7 @@ color: white;
 font-weight: bold;
 }
 .send{
+margin-top: 10px;
 margin-left: 5%;
 font-size: 15px;
 background-color: crimson;

@@ -9,25 +9,18 @@
       @cancel="disagree" class="pop">
       <div class="wenxin-div">
         <span class="wenxin-span">告示</span>
-        <p class="wenxin-p">定制作品仅用于个人学习</p>
-        <p class="wenxin-p">未经著作权人许可，不得用于任何有偿活动</p>
-        <p class="wenxin-p">定制的鸟然谱与上传的曲目可能存在差异</p>
+        <p class="wenxin-p">□ 定制作品仅用于个人学习。</p>
+        <p class="wenxin-p">□ 未经著作权人许可，不得用于任何有偿活动。</p>
+        <p class="wenxin-p">□ 定制的鸟然谱与上传的曲目可能存在差异。</p>
       </div>
     </van-dialog>
 
 
 
-  <!-- <div class="flash">
-    <video autoplay loop poster x5-playsinline="true" preload="auto" 
-    x5-video-player-fullscreen="true" webkit-playsinline="true" x-webkit-airplay="true" playsinline="true"
-    id="cartoon" 
-    src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/haha.mp4"
-    height="250px" width="80%"/>
-  </div> -->
 
 
 <div class="flash">
-  <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BBnew.gif"
+  <img src="https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BBnew.gif"
   height="200px" width="80%">
 </div>
 

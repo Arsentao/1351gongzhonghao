@@ -1,57 +1,56 @@
 <template>
   <div class="personal">
     <div class="top-box">
-      <div class="top-bg">
         <img src="https://fengpu1351-1300303301.file.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%B0%8F%E5%8A%A8%E7%94%BB11-21.gif"
              alt="">
-      </div>
-      <!-- <div class="personal-tit">
-        {{nickName}}
-      </div>
-      <div class="my-portraitt">
-        <img :src="userPic"
-             alt="">
-      </div> -->
     </div>
-    <!-- 列表 -->
+
+
     <ul class="my-plate">
-      <router-link to="/orderList"
-                   class="plate-item"
-                   tag="li">
+      <li class="plate-item" @click="showOrder()">
         <div class="plate-icon">
           <img src="../../assets/images/personal/myOrder.png"
                alt="">
         </div>
         <div class="plate-name">
-          <span>琴侣订单</span>
+          <span>订单详情</span>
         </div>
-        <i class="open-icon"></i>
-      </router-link>
-      <router-link to="/songOrders"
+   
+      </li>
+
+
+       <router-link to="/orderList"
                    class="plate-item"
-                   tag="li">
-        <div class="plate-icon">
-          <img src="../../assets/images/personal/myOrder.png"
-               alt="">
-        </div>
+                   tag="li" v-show="show1">
         <div class="plate-name">
-          <span>曲谱订单</span>
+          <span style="font-size:15px">琴侣订单</span>
         </div>
-        <i class="open-icon"></i>
+        
       </router-link>
+
+       <router-link to="/songOrders"
+                   class="plate-item"
+                   tag="li" v-show="show2">
+        <div class="plate-name">
+          <span style="font-size:15px">曲谱订单</span>
+        </div>
+        
+      </router-link>
+
       <router-link to="/songOrderList"
                    class="plate-item"
-                   tag="li">
-        <div class="plate-icon">
-          <img src="../../assets/images/personal/myOrder.png"
-               alt="">
-        </div>
+                   tag="li" v-show="show3">
         <div class="plate-name">
-          <span>定制订单</span>
+          <span style="font-size:15px">定制订单</span>
         </div>
-        <i class="open-icon"></i>
+     
       </router-link>
-      <router-link to="/wallet"
+
+
+ 
+   
+     
+      <router-link to="/question"
                    class="plate-item"
                    tag="li">
         <div class="plate-icon">
@@ -59,22 +58,15 @@
                alt="">
         </div>
         <div class="plate-name">
-          <span>我的钱包</span>
+          <span>历史提问</span>
         </div>
-        <i class="open-icon"></i>
+       
       </router-link>
-      <router-link to="/friends"
-                   class="plate-item"
-                   tag="li">
-        <div class="plate-icon">
-          <img src="../../assets/images/personal/myFriends.png"
-               alt="">
-        </div>
-        <div class="plate-name">
-          <span>好友列表</span>
-        </div>
-        <i class="open-icon"></i>
-      </router-link>
+
+
+
+
+  
       <router-link to="/address"
                    class="plate-item"
                    tag="li">
@@ -85,20 +77,22 @@
         <div class="plate-name">
           <span>收货地址</span>
         </div>
-        <i class="open-icon"></i>
+     
       </router-link>
-      <li class="plate-item" @click="toMyIntegral">
+           </ul>
+
+  <router-link to="/beStar"
+                   tag="div"
+                   class="camp">
         <div class="plate-icon">
-          <img src="../../assets/images/personal/myIntegral.png"
+          <img src="../../assets/images/personal/myStar.png"
                alt="">
         </div>
         <div class="plate-name">
-          <span>我的积分</span>
+          <span>网红营地</span>
         </div>
-        <i class="open-icon"></i>
-      </li>
-    </ul>
-    <!-- 脚部 -->
+      </router-link>
+ 
     <foot-nav :navIndex="2"></foot-nav>
   </div>
 </template>
@@ -111,8 +105,11 @@ export default {
   },
   data () {
     return {
+      show1: false,
+      show2: false,
+      show3: false,
       userPic: '',
-      nickName: ''
+      nickName: '',
     }
   },
   created () {
@@ -125,6 +122,11 @@ export default {
     }
   },
   methods: {
+    showOrder(){
+     this.show1 = !this.show1
+     this.show2 = !this.show2
+     this.show3 = !this.show3
+    },
     toMyIntegral(){
       this.$toast("积分功能暂未开放~");
     }
@@ -147,14 +149,11 @@ img {
   position: relative;
   box-sizing: border-box;
   width: 100%;
+  height: 25%;
 }
-.top-bg {
-  width: 100%;
-  height: 12.5rem;
-  overflow: hidden;
-}
-.top-bg > img {
-  width: 100%;
+.top-box img{
+height: 100%;
+width: 100%;
 }
 /* 头像 */
 .my-portraitt {
@@ -202,7 +201,8 @@ ul.my-plate {
   box-sizing: border-box;
   padding: 0 2em;
   color: black;
-  margin-bottom: 8em;
+  background: url("../../assets/images/personal/mark1.png");
+  background-size: 100% 200%;
 }
 li.plate-item:last-child {
   border-bottom: none;
@@ -214,10 +214,25 @@ li.plate-item {
   text-align: left;
   border-bottom: 1px solid #ececec;
 }
+li.plate-item-star{
+  position: relative;
+  box-sizing: border-box;
+  padding: 1.3em 0;
+  text-align: left;
+  border-bottom: 1px solid #ececec;
+  background-color: rgb(103, 214, 241)
+}
 .plate-icon {
   display: inline-block;
   width: 1.5rem;
   height: 1.5rem;
+  padding-right: 1em;
+  overflow: hidden;
+}
+.star-icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
   padding-right: 1em;
   overflow: hidden;
 }
@@ -231,6 +246,19 @@ li.plate-item {
   font-size: 18px;
   letter-spacing: 1px;
 }
+
+.plate-star {
+  display: inline-block;
+  max-width: 40%;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+.plate-star span {
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+
 .open-icon {
   position: absolute;
   top: 50%;
@@ -243,5 +271,16 @@ li.plate-item {
   height: 0.9em;
   background: url("../../assets/images/personal/open-icon.png") no-repeat;
   background-size: 0.5em 0.9em;
+}
+
+.camp{
+text-align: left;
+padding-left: 2em;
+width: 100%;
+height: 50%;
+background: url("../../assets/images/personal/mark2.png");
+background-size: 100% 100%;
+border-top: 1px solid #ececec;
+padding-top: 1.3em;
 }
 </style>
