@@ -101,7 +101,6 @@ export default {
       addrId: this.$route.query.addrId || 0,
       remarks: sessionStorage.getItem('remarks'),
       phone1: sessionStorage.getItem('phone1'),
-      phone2: sessionStorage.getItem('phone2'),
     }
   },
   created () {
@@ -137,20 +136,12 @@ export default {
         return
       }
    
-         else if (this.phone1.length != 11 && this.phone1.length != 0) {
+        else if (this.phone1.length != 11 && this.phone1.length != 0) {
         this.$toast('请输入正确的电话号码')
         return
       }
     
-         else if (this.phone2.length != 11 && this.phone2.length != 0) {
-        this.$toast('请输入正确的电话号码')
-        return
-      }
-        else if (this.phone1 == this.phone2 && this.phone1.length != 0 ) {
-        this.$toast('两个推荐人电话不能一致')
-        return
-      }
-        else if (this.phone1 == this.userAddr.mobile || this.phone2 == this.userAddr.mobile) {
+        else if (this.phone1 == this.userAddr.mobile) {
         this.$toast('推荐人电话不能与收货地址所填的号码一致')
         return
       }
@@ -170,8 +161,7 @@ export default {
           orderShopParam: [{
             remarks: this.remarks,
             shopId: 1,
-            phone1: this.phone1,
-            phone2: this.phone2,
+            phone1: this.phone1
           }]
         })
       }).then(({ data }) => {

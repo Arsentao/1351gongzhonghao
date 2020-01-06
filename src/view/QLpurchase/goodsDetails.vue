@@ -50,14 +50,11 @@
     </div>
      
      <div class="leave-msg">
-      推荐人1电话：<input type="text" 
+      推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
    
-     <div class="leave-msg">
-      推荐人2电话：<input type="text"
-             v-model="phone2" @blur="msg()">
-    </div>
+  
 
 
     <!-- <div class="cnt-price"><span class = "price-show">单价</span> ￥{{ defaultSku?defaultSku.price.toFixed(2):price }}&nbsp;&nbsp;&nbsp;&nbsp;
@@ -88,7 +85,6 @@ export default {
     return {
       remarks: '',
       phone1: '',
-      phone2: '',
       prodId: this.$route.params.prodId,
       imgMap: [],
       shopId: 1,
@@ -345,7 +341,6 @@ export default {
       sessionStorage.setItem('orderEntry', 1)
       sessionStorage.setItem('remarks', this.remarks)
       sessionStorage.setItem('phone1', this.phone1)
-      sessionStorage.setItem('phone2', this.phone2)
       this.$router.push('/order')
     },
 

@@ -20,7 +20,7 @@
              v-for="(item,index) of videoList"
              @click="changeVideo(index)"
              :key="index">
-        <img :src="poster[index]" width="100px"  :class="{'current-red':index == isactive}">
+        <img :src="poster[index]" width="100px" height="75px" :class="{'current-red':index == isactive}">
         </div>
       </div>
     </div> 
@@ -67,7 +67,8 @@ export default {
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/1.png",
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png",
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png",
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png"
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png",
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/6.png"
       ]
     }
   },
@@ -213,7 +214,6 @@ export default {
 }
 .slide-item > img {
   width: 100%;
-  height: 100%;
 }
 .current-red {
   border: 2px solid rgb(218, 47, 47)

@@ -118,14 +118,11 @@
 
       
        <div class="leave-msg">
-      推荐人1电话：<input type="text" 
+      推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
    
-     <div class="leave-msg">
-      推荐人2电话：<input type="text"
-             v-model="phone2" @blur="msg()">
-    </div>
+     
 
       <div class="conserve-btn" @click="queryFilesSubmit()">提交</div>
       
@@ -152,7 +149,6 @@ export default {
   data () {
     return {
       phone1: '',
-      phone2: '',
       fileListA: [],
       fileListB: [],
       fileListC: [],
@@ -407,8 +403,7 @@ export default {
         data: {
           fileList: filePaths,
           customizedNo: this.customizedNo,
-          phone1: this.phone1,
-          phone2: this.phone2
+          phone1: this.phone1
         }
       }).then(({ data }) => {
         if(this.fee == 0){

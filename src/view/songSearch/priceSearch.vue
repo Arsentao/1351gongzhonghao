@@ -31,14 +31,11 @@
 
  <div class="recommand">
         <div class="leave-msg">
-      推荐人1电话：<input type="text" 
+      推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
    
-     <div class="leave-msg">
-      推荐人2电话：<input type="text"
-             v-model="phone2" @blur="msg()">
-    </div>
+
  </div>
   <div class="submit">
       <van-button type="danger" @click="buy" class="buy">购买</van-button>
@@ -61,8 +58,7 @@ title: '曲谱类型选择',
         radio: "0",
         musicid: sessionStorage.getItem('musicid'),
         pricetotal: [sessionStorage.getItem('price'),sessionStorage.getItem('price1')],
-        phone1: "",
-        phone2: ""
+        phone1: ""
         }
     },
 
@@ -74,17 +70,8 @@ methods: {
     console.log('触发')
   },
      buy () {
-         if (this.phone1.length != 11 && this.phone1.length != 0) {
+      if (this.phone1.length != 11 && this.phone1.length != 0) {
         this.$toast('请输入正确的电话号码')
-        return
-      }
-    
-         else if (this.phone2.length != 11 && this.phone2.length != 0) {
-        this.$toast('请输入正确的电话号码')
-        return
-      }
-        else if (this.phone1 == this.phone2 && this.phone1.length != 0) {
-        this.$toast('两个推荐人电话不能一致')
         return
       }
       else{
@@ -97,8 +84,7 @@ methods: {
         method: 'POST',
          data: this.$http.adornData({
             musicId: this.musicid,
-            phone1: this.phone1,
-            phone2: this.phone2, 
+            phone1: this.phone1
         })
       }).then(({ data }) => {
         this.$toast.clear()
