@@ -68,7 +68,7 @@ const router = new Router({
       name: 'knowledge',
       component: knowledge,
       meta: {
-        title: '鸟然谱库'
+        title: '乐谱知识'
       }
     },
     {
@@ -371,7 +371,7 @@ const router = new Router({
       name: 'personal',
       component: personal,
       meta: {
-        title: '个人网红'
+        title: '个人中心'
       }
     },
     {
@@ -387,7 +387,7 @@ const router = new Router({
       name: 'beStar',
       component: beStar,
       meta: {
-        title: '网红认证'
+        title: '品牌大使'
       }
     },
     {

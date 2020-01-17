@@ -11,7 +11,7 @@
         <li :class="{'curr':navIndex==2}">
           <router-link to="/personal">
             <i class="foot-nav-icon foot-nav-personal"></i>
-            <span class="foot-nav-text">个人网红</span>
+            <span class="foot-nav-text">个人中心</span>
           </router-link>
         </li>
         <li :class="{'curr':navIndex==3}">
@@ -95,7 +95,7 @@ export default {
           path: '/QA',
           icon: forumPic
         }, {
-          name: '个人网红',
+          name: '个人中心',
           path: '/personal',
           icon: personalPic
         }, {

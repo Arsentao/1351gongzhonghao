@@ -48,7 +48,17 @@
 
 
 
-
+  <van-popup v-model="pictureshow" class="infopop" closeable
+ close-icon-position="top-left" round close-icon="close">
+ <div class="picture">
+   <div class="picture_title">
+     {{music_title}}(鸟然谱)
+   </div>
+   <div class="picture_show">
+     <img :src="picture_url" width="400px" height="200px">
+   </div>
+ </div>
+  </van-popup>
 
 
     <div class="head-wrap">
@@ -115,10 +125,11 @@
             </div>
           </div>
 
+
           <div class="play">
-          <img src="../../assets/images/icon/play.png"
+          <img src="../../assets/images/icon/search_black.png"
                      alt=""
-                     @click="showPopup(item.auditionUrl)"
+                     @click="showPicture(item)"
                      class="song-search-li1-img5">
           </div>
 
@@ -182,6 +193,9 @@ export default {
   },
   data () {
     return {
+      picture_url: '',
+      music_title: '',
+      pictureshow: false,
       key: '',
       records: [],
       totalPage: 1,
@@ -217,7 +231,12 @@ export default {
     this.queryMusicList(1)
   },
   methods: {
-    //弹窗
+    showPicture(item){
+      console.log(item)
+      this.pictureshow = true
+      this.music_title = item.musicName
+      this.picture_url = item.auditionUrl
+    },
     showPopup(url) {
       var format = url.slice(-3)
       this.show = true
@@ -832,17 +851,19 @@ line-height: 200%;
 width: 50%;
 margin-left: 25%;
 border: 2px dashed rgb(80, 121, 209);
-
-
-
 }
-</style>
-<style>
-/* .van-dialog__confirm .van-button__text{
-padding-left: 30px;
-padding-right: 30px;
+.picture_title{
+margin-top: 10px;
+text-align: center;
+font-size: 20px;
+font-weight: bold;
+color: crimson;
 }
-.van-dialog{
-width: 95%;
-} */
+.picture_show{
+margin-top: 20px;
+}
+.infopop{
+width: 100%;
+height: 50%;
+}
 </style>

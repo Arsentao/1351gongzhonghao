@@ -136,15 +136,6 @@ export default {
         return
       }
    
-        else if (this.phone1.length != 11 && this.phone1.length != 0) {
-        this.$toast('请输入正确的电话号码')
-        return
-      }
-    
-        else if (this.phone1 == this.userAddr.mobile) {
-        this.$toast('推荐人电话不能与收货地址所填的号码一致')
-        return
-      }
      else{
       this.submitOrder()
      }

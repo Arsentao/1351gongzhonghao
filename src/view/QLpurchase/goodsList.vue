@@ -49,9 +49,8 @@
       </router-link>
     </ul>
     <div class="info">
-      <p class="detail">□ 两台以上包邮</p>
-      <p class="detail">□ 十件以上赠送蓝牙音箱</p>
-      <p class="detail">□ 二十台以上赠送一台琴侣</p>
+      <p class="detail">□ 2台以上包邮</p>
+      <p class="detail">□ 10台以上赠送蓝牙音箱</p>
     </div>
     <div class="prompt"
          v-if="totalPage>1">

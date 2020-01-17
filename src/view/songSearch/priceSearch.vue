@@ -34,6 +34,10 @@
       推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
+      <div class="leave-msg">
+      请确认推荐人电话：<input type="text" 
+             v-model="phone2" @blur="msg()">
+    </div>
    
 
  </div>
@@ -58,7 +62,8 @@ title: '曲谱类型选择',
         radio: "0",
         musicid: sessionStorage.getItem('musicid'),
         pricetotal: [sessionStorage.getItem('price'),sessionStorage.getItem('price1')],
-        phone1: ""
+        phone1: "",
+        phone2: "",
         }
     },
 
@@ -74,11 +79,13 @@ methods: {
         this.$toast('请输入正确的电话号码')
         return
       }
+        else if(this.phone1 != this.phone2){
+            this.$toast('两次输入的手机号码不相同')
+          }
       else{
-      this.$toast.loading({
-        forbidClick: true,
-        duration: 0
-      })
+       this.$dialog.confirm({
+        message: '请仔细核对输入的手机号\n一旦确认不得修改'
+      }).then(() => {
       this.$http({
         url: this.$http.adornUrl('/p/music/order/buy?type=' + this.radio),
         method: 'POST',
@@ -87,10 +94,10 @@ methods: {
             phone1: this.phone1
         })
       }).then(({ data }) => {
-        this.$toast.clear()
         sessionStorage.setItem('orderNo', data.orderNo)
         sessionStorage.setItem('songTotal', this.pricetotal[this.radio])
         this.$router.push('/songPay')
+      })
       })
       }
     },

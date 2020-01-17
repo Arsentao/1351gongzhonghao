@@ -53,6 +53,10 @@
       推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
+    <div class="leave-msg">
+      请确认推荐人电话：<input type="text" 
+             v-model="phone2" @blur="msg()">
+    </div>
    
   
 
@@ -85,6 +89,7 @@ export default {
     return {
       remarks: '',
       phone1: '',
+      phone2: '',
       prodId: this.$route.params.prodId,
       imgMap: [],
       shopId: 1,
@@ -331,17 +336,28 @@ export default {
      * 立即购买
      */
     buyNow () {
-      sessionStorage.setItem('orderItem', JSON.stringify({
+      if (this.phone1.length != 11 && this.phone1.length != 0) {
+        this.$toast('请输入正确的电话号码')
+        return
+      }
+       else if(this.phone1 != this.phone2){
+            this.$toast('两次输入的手机号码不相同')
+          }
+      else{
+        this.$dialog.confirm({
+        message: '请仔细核对输入的手机号\n一旦确认不得修改'
+      }).then(() => {  
+        sessionStorage.setItem('orderItem', JSON.stringify({
         prodId: this.prodId,
         skuId: this.defaultSku.skuId,
         prodCount: this.prodNum,
         shopId: 1
       }))
-      // 跳转到填写订单页面
       sessionStorage.setItem('orderEntry', 1)
       sessionStorage.setItem('remarks', this.remarks)
       sessionStorage.setItem('phone1', this.phone1)
-      this.$router.push('/order')
+      this.$router.push('/order')})
+    }
     },
 
     /**

@@ -121,10 +121,14 @@
       推荐人电话：<input type="text" 
              v-model="phone1" @blur="msg()">
     </div>
+     <div class="leave-msg">
+      请确认推荐人电话：<input type="text" 
+             v-model="phone2" @blur="msg()">
+    </div>
    
      
 
-      <div class="conserve-btn" @click="queryFilesSubmit()">提交</div>
+      <button class="conserve-btn" @click="queryFilesSubmit()">提交</button>
       
 
     </div>
@@ -149,6 +153,8 @@ export default {
   data () {
     return {
       phone1: '',
+      phone2: '',
+      filePaths: [],
       fileListA: [],
       fileListB: [],
       fileListC: [],
@@ -369,58 +375,63 @@ export default {
      * 请求接口
      */
     queryFilesSubmit () {
-      if (this.fileList.length == 0) {
-        return
-      }
-      this.$toast.loading({
-        forbidClick: true,
-        duration: 0
-      })
-
-      var filePaths = [];
-     
- 
+      
       if (this.fileListA.length == 1){
-       filePaths.push(this.fileListA[0].path)
+       this.filePaths.push(this.fileListA[0].path)
       }
       if (this.fileListB.length == 1){
-       filePaths.push(this.fileListB[0].path)
+       this.filePaths.push(this.fileListB[0].path)
       }
       if (this.fileListC.length == 1){
-       filePaths.push(this.fileListC[0].path)
+       this.filePaths.push(this.fileListC[0].path)
       }
       if (this.fileListD.length == 1){
-       filePaths.push(this.fileListD[0].path)
+       this.filePaths.push(this.fileListD[0].path)
       }
       if (this.fileListE.length == 1){
-       filePaths.push(this.fileListE[0].path)
+       this.filePaths.push(this.fileListE[0].path)
       }
-      
-
-      this.$http({
+      console.log(this.filePaths)
+      if(this.filePaths.length == 0){
+        return
+      }
+      else{  
+        this.send()
+        }
+    
+  },
+  send(){
+         if(this.phone1.length != 11 && this.phone1.length != 0){
+              this.$toast('请输入正确的手机号码')
+          }
+          else if(this.phone1 != this.phone2){
+            this.$toast('两次输入的手机号码不相同')
+          }
+          else{
+        this.$dialog.confirm({
+        message: '请仔细核对输入的手机号\n一旦确认不得修改'
+      }).then(() => {  
+        console.log('触发')
+        this.$http({
         url: this.$http.adornUrl('/p/musicCustomized/uploadMusicSource'),
         method: 'POST',
         data: {
-          fileList: filePaths,
+          fileList: this.filePaths,
           customizedNo: this.customizedNo,
           phone1: this.phone1
         }
       }).then(({ data }) => {
         if(this.fee == 0){
-        this.$toast.clear()
         this.show2 = true
         }
 
         else{
-        this.$toast.clear()
         this.show1 = true
         }
-
-
-      })
+      })})  
     }
-
   }
+}
 }
 </script>
 

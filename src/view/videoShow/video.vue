@@ -1,24 +1,25 @@
 <template>
   <div class="video-main">
-    <!-- 视频标题 -->
-    <div class="video-title">
+
+
+    <!-- <div class="video-title">
       <p>{{ videoTitle }}</p>
     </div>
-    <!-- 正在播放的视频 -->
-    <div class="video-box">
+
+    <div class="video-box" @click="routerChange()">
       <video controls
              id="myVideo" @ended="videoEnded()">
         <source src=""
                 type="video/mp4">
       </video>
-    </div>
+    </div> -->
     
 
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide slide-item"
              v-for="(item,index) of videoList"
-             @click="changeVideo(index)"
+             @click="showTitle(index)"
              :key="index">
         <img :src="poster[index]" width="100px" height="75px" :class="{'current-red':index == isactive}">
         </div>
@@ -26,16 +27,21 @@
     </div> 
 
 
+<div class="notice">
+  <p class="info_title">公告</p>
+  <p class="parm">从首页进入<span class='span_personal'>个人中心</span>栏目</p>
+  <p class="parm">申请成为琴侣品牌介绍人</p>
+  <p class="parm">即获赠微型动漫</p>
+</div>
 
 
-       <div class="garden">
-      <router-link to="garden">
+   <!-- <div class="garden">
+      <a href='https://baike.baidu.com/item/%E9%B8%9F%E7%84%B6%E8%B0%B1%E7%90%B4%E4%BE%A3/24215351?fr=aladdin'>
       <img src="https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/5.png" width="100px" height="75px">
-      </router-link>
-    </div>
+      </a>
+    </div> -->
 
 
-<!-- <div id="vcenterx"><span class="title">游戏式学琴</span></div> -->
 
    <v-footer></v-footer>
   </div>
@@ -68,21 +74,22 @@ export default {
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/2.png",
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/3.png",
       "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/4.png",
-      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/6.png"
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/6.png",
+      "https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/5.png"
       ]
     }
   },
   created () {
     this.$notify({ type: 'primary', message: '为避免弹出手机内置对话框' + '\n' + '请在浏览本网站时轻按所有按钮' });
-    this.queryVideoDetail() // 视频接口
-    this.queryFriendshipLinks() // 友情链接接口
+    this.queryVideoDetail() 
   },
 
 
   methods: {
-    /**
-     * 点击视频
-     */
+    routerChange(){
+        console.log('触发')
+        window.location.href = 'https://baike.baidu.com/item/%E9%B8%9F%E7%84%B6%E8%B0%B1/24221256?fr=aladdin'
+    },
     changeVideo (index) {
       var souceHtml = "<source src='" + this.videoList[index].videoLink + "' type='video/mp4'>"
       document.querySelector('#myVideo').innerHTML = souceHtml
@@ -92,7 +99,17 @@ export default {
       document.querySelector('#myVideo').play();
     },
 
-
+    showTitle(index){
+      var urls = ['https://baike.baidu.com/item/%E9%B8%9F%E7%84%B6%E8%B0%B1/24221256?fr=aladdin',
+      'https://baike.baidu.com/item/%E9%B8%9F%E7%84%B6%E8%B0%B1%E7%90%B4%E4%BE%A3/24215351?fr=aladdin',
+      'https://baike.sogou.com/v184500391.htm?fromTitle=%E9%B8%9F%E7%84%B6%E8%B0%B1',
+      'https://baike.sogou.com/v184500700.htm?fromTitle=%E9%B8%9F%E7%84%B6%E8%B0%B1%E7%90%B4%E4%BE%A3',
+      'https://baike.baidu.com/item/%E9%B8%9F%E7%84%B6%E8%B0%B1/24221256?fr=aladdin',
+      'https://baike.sogou.com/v184500391.htm?fromTitle=%E9%B8%9F%E7%84%B6%E8%B0%B1'
+      ]
+      window.location.href = urls[index]
+          
+    },
  changeGarden (index) {
       var souceHtml = "<source src='" + this.gardenList[index].videoLink + "' type='video/mp4'>"
       document.querySelector('#myVideo').innerHTML = souceHtml
@@ -131,8 +148,8 @@ export default {
         this.$toast.clear()
         this.videoList = data.records.reverse()
         var souceHtml = "<source src='" + this.videoList[0].videoLink + "' type='video/mp4'>"
-        document.querySelector('#myVideo').innerHTML = souceHtml
-        document.querySelector('#myVideo').load()
+        // document.querySelector('#myVideo').innerHTML = souceHtml
+        // document.querySelector('#myVideo').load()
         this.videoTitle = this.videoList[0].videoTitle
       })
     },
@@ -173,6 +190,7 @@ export default {
 .video-box {
   box-sizing: border-box;
   width: 100%;
+  height: 200px;
   /* height: 70vw; */
   border-bottom: 1px solid rgb(228, 228, 228);
   background: #000;
@@ -209,7 +227,7 @@ export default {
 .slide-item {
   display: inline-block;
   width: 23.6vw;
-  margin-right: 25px;
+  margin-right: 10px;
   /* margin-bottom: 1.5em; */
 }
 .slide-item > img {
@@ -400,5 +418,30 @@ text-align: center;
 background-repeat: no-repeat;
 padding-top: 25px;
 margin-left: 0.3em;
+}
+.notice{
+margin-top: 30px;
+width: 80%;
+text-align: center;
+margin-left: 10%;
+border: 2px dashed rgb(46, 176, 216);
+}
+.info_title{
+color: crimson;
+font-size: 22px;
+font-weight: bold;
+line-height: 150%;
+}
+.parm{
+font-size: 18px;
+line-height: 150%;
+color: rgb(45, 100, 145);
+text-align: center
+}
+.span_personal{
+padding: 3px;
+color: white;
+font-weight: bold;
+background-color: rgb(57, 183, 233)
 }
 </style>

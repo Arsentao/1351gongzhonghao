@@ -2,6 +2,25 @@
   <div class="beStar">
   
   
+<van-popup v-model="infoshow" class="infopop" closeable
+ close-icon-position="top-left" round close-icon="close">
+  <div class="notice">
+  <div class="star">
+    <span class="title">品牌大使告示</span>
+    <p class="parm">1.自购一台琴侣获得认证成为品牌大使以及终身受益人资格。（终身受益人：如用户未填写新推荐人系统则根据用户购买记录默认判定首先填写的推荐人，该推荐人可获得订单总额的5%。每台pad的终身受益人仅限一人）</p>
+    <p class="parm">2.认证成为品牌大使后，每推荐用户购买一台琴侣即可获得琴侣售价的10%做为品牌推广费。</p>
+    <p class="parm">3.推荐客户购买鸟然谱或用户定制服务，推荐人可获得被推荐人该笔订单10%的服务费。</p>
+    <p class="parm">4.用户必须在推荐人一栏填写推荐人的联系方式才可享受该优惠；用户首次填写推荐人，该推荐人自动成为终身受益人。</p>
+  </div>
+  <div class="recommand">
+    <span class="title">推荐人告示</span>
+    <p class="parm">1.推广费采取周结模式（以支付宝、微信入账最小单位四舍五入进账），用户可通过品牌大使功能查看当前被推荐人下单数量。</p>
+    <p class="parm">2.推荐人与终身受益人重叠时，按最高的推广费用计算。</p>
+  </div>
+  <button class="btn_info" @click="close()">确定</button>
+  </div>
+</van-popup>
+
 
 <van-popup v-model="show" class="pop" closeable @close="closepop()"
   close-icon-position="top-left" round close-icon="close">
@@ -31,7 +50,10 @@
   :min-date="minDate"  :max-date="maxDate"/>
 
 
-
+ <div class="flash">
+ <img src="https://fengpu1351-1300303301.cos.ap-guangzhou.myqcloud.com/%E5%A5%87%E5%A6%99%E5%AD%A6%E7%90%B4%E8%AE%B0/%E5%A4%A7%E4%BD%BF1280X700.gif"
+ height="200px" width="80%">
+ </div>
 
   <div class="write">
   <van-field
@@ -43,19 +65,26 @@
     placeholder="请输入手机号"
     :disabled="isable"
   />
+   <van-field
+  type="number"
+  left-icon="contact"
+    v-model="phone1"
+    clearable
+    label="手机号"
+    placeholder="请确认手机号"
+    :disabled="isable"
+  />
   </div>
+  
 
   <div class="submit">
       <button class="btn_submit" @click="submit()">申请</button>
   </div>
   <div class="submit">
-      <button class="btn_modify" @click="theshow = true">修改</button>
-  </div>
-    <div class="submit">
       <button class="btn_search" @click="show = true">查询</button>
   </div>
 
-  <div class="info">成为网红可以获得产品推荐提成</div>
+  <div class="info">成为品牌大使可以获得产品推荐提成</div>
 
    <foot-nav></foot-nav>
   </div>
@@ -71,12 +100,15 @@ export default {
   },
   data(){
       return{
+        status: 0,
         ifpost: false,
         isable: false,
         modifyphone: '',
         searchphone: '',
         phone: '',
+        phone1: '',
         theshow: false,
+        infoshow: false,
         show: false,
         show1: false,
         show2: false,
@@ -93,6 +125,7 @@ export default {
   },
 
   created(){
+       this.infoshow = true
        this.$http({
         url: this.$http.adornUrl('/p/user/getphone'),
         method: 'get'
@@ -100,6 +133,7 @@ export default {
             this.searchphone = data
             if(this.searchphone != ''){
               this.phone = this.searchphone
+              this.phone1 = this.searchphone
               this.isable = true
               this.ifpost = true
             }
@@ -108,6 +142,9 @@ export default {
        }
   ,
   methods:{
+    close(){
+       this.infoshow = false
+    },
     closepop(){
      this.totalmoney = 0
      this.modifyphone = ''
@@ -213,22 +250,41 @@ export default {
               this.$toast('请输入正确的手机号码')
               return
           }
+          else if(this.phone != this.phone1){
+            this.$toast('两次输入的手机号码不相同')
+          }
           else{
-
-      this.$http({
+        this.$dialog.confirm({
+        message: '请仔细核对输入的手机号\n一旦确认不得修改'
+      }).then(() => {
+         this.$http({
         url: this.$http.adornUrl('/p/user/setphone'),
         method: 'post',
         data: this.$http.adornData({
           phone: this.phone
         })
       }).then(({ data }) => {
+
+        if(data == 1){
        this.$dialog.alert({
         title: '申请成功!',
-        message: '您已经成为了网红!'
+        message: '您已经成为了品牌大使!'
       }).then(() => {
         this.$router.go(0)
       })
+
+        }
+        else{
+        this.$dialog.alert({
+        title: '申请失败!',
+        message: '您还未购买琴侣，无法申请成为品牌大使!'
+      }).then(() => {
+        this.$router.go(0)
       })
+        }
+      })
+        })
+     
           }
       }
   }
@@ -247,7 +303,7 @@ export default {
   overflow: auto;
 }
 .write{
-margin-top: 100px;
+margin-top: 50px;
 }
 
 .btn_submit{
@@ -260,7 +316,7 @@ border: 1px solid rgba(214,18,44,.85);
 border-radius: 3px;
 background-color: rgba(214,18,44,.85);
 font-weight: 700;
-margin-top: 100px;
+margin-top: 30px;
 }
 .btn_modify{
 width: 200px;
@@ -364,7 +420,40 @@ margin-bottom: 100px;
 font-size: 20px;
 font-weight: 700;
 color: red;
-margin-top: 100px;
+margin-top: 20px;
+}
+.infopop{
+width: 100%;
+height: 80%;
+padding-top: 50px; 
+}
+.title{
+font-size: 20px;
+font-weight: bold;
+color: red;
+line-height: 150%;
+}
+.parm{
+font-size: 16px;
+line-height: 150%;
+text-align: left;
+padding: 5px 10px;
 }
 
+.btn_info{
+width: 120px;
+height: 40px;
+font-size: 20px;
+color: #fff;
+border: 1px solid rgba(214,18,44,.85);
+border-radius: 3px;
+background-color: rgba(214,18,44,.85);
+font-weight: 700;
+vertical-align: middle;
+margin-top: 30px;
+margin-bottom: 30px;
+}
+.flash{
+margin-top: 0px;
+}
 </style>

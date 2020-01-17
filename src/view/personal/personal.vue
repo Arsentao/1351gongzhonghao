@@ -84,13 +84,19 @@
   <router-link to="/beStar"
                    tag="div"
                    class="camp">
+
+
+        <div class="bg">
         <div class="plate-icon">
           <img src="../../assets/images/personal/myStar.png"
                alt="">
         </div>
         <div class="plate-name">
-          <span>网红营地</span>
+          <span>品牌大使</span>
         </div>
+        </div>
+
+
       </router-link>
  
     <foot-nav :navIndex="2"></foot-nav>
@@ -279,8 +285,13 @@ padding-left: 2em;
 width: 100%;
 height: 50%;
 background: url("../../assets/images/personal/mark2.png");
-background-size: 100% 100%;
+background-size: 100% 150%;
 border-top: 1px solid #ececec;
 padding-top: 1.3em;
+}
+
+.bg{
+width: 100%;
+background-color: rgb(96, 207, 235)
 }
 </style>
